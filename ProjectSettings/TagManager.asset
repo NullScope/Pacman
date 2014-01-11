@@ -7,7 +7,6 @@ TagManager:
   - Wall
   - PacDot
   - Power Pellet
-  - Player
   - Enemy
   - Point
   - Pacman Respawn
@@ -20,12 +19,12 @@ TagManager:
   Builtin Layer 5: 
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: Player
-  User Layer 9: Enemies
-  User Layer 10: Points
-  User Layer 11: Walls
-  User Layer 12: Background
-  User Layer 13: Respawning
+  User Layer 8: Enemies
+  User Layer 9: Points
+  User Layer 10: Walls
+  User Layer 11: Background
+  User Layer 12: Respawning
+  User Layer 13: 
   User Layer 14: 
   User Layer 15: 
   User Layer 16: 
