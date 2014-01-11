@@ -1,0 +1,1498 @@
+fileFormatVersion: 2
+guid: a8abf0abf37cb774a89c74cd433c95cf
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: original_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 265
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 265
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 265
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 263
+        width: 13
+        height: 14
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 263
+        width: 11
+        height: 14
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 263
+        width: 15
+        height: 14
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 267
+        width: 8
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 267
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 246
+        width: 24
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 244
+        width: 12
+        height: 13
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 244
+        width: 9
+        height: 13
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 243
+        width: 13
+        height: 14
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 243
+        width: 11
+        height: 14
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 241
+        width: 15
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 247
+        width: 5
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 247
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 247
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 224
+        width: 13
+        height: 12
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 224
+        width: 13
+        height: 9
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 223
+        width: 14
+        height: 13
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 223
+        width: 14
+        height: 11
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 223
+        width: 14
+        height: 14
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 227
+        width: 5
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 227
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 227
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 206
+        width: 30
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 205
+        width: 13
+        height: 12
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 209
+        width: 13
+        height: 9
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 205
+        width: 14
+        height: 13
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 207
+        width: 14
+        height: 11
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 203
+        width: 14
+        height: 15
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 207
+        width: 5
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 207
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 207
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 201
+        width: 6
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 201
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 201
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 183
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 183
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 183
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 183
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 183
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 183
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_49
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 183
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 183
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_51
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 187
+        width: 8
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_52
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 187
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_53
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 187
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_54
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 191
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_55
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 191
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_56
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 191
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_57
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 166
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_58
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 163
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_59
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 163
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_60
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 163
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_61
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 163
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_62
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 163
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_63
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 163
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_64
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 163
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_65
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 163
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_66
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 167
+        width: 5
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_67
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 167
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_68
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 167
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_69
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 167
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_70
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 143
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_71
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 143
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_72
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 143
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_73
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 143
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_74
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 143
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_75
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 143
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_76
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 143
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_77
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 143
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_78
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 147
+        width: 5
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_79
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 147
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_80
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 147
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_81
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 147
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_82
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 123
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_83
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 123
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_84
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 123
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_85
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 123
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_86
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 123
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_87
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 123
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_88
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 123
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_89
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 123
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_90
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 127
+        width: 5
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_91
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 127
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_92
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 127
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_93
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 127
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_94
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 103
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_95
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 103
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_96
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 103
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_97
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 103
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_98
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 105
+        width: 10
+        height: 11
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_99
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 103
+        width: 14
+        height: 14
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_100
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 103
+        width: 14
+        height: 14
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_101
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 104
+        width: 12
+        height: 12
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_102
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 103
+        width: 11
+        height: 14
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_103
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 90
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_104
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 91
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_105
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 91
+        width: 6
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_106
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 91
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_107
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 91
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_108
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 91
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_109
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 91
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_110
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 91
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_111
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 91
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_112
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 91
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_113
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 91
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_114
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 83
+        width: 22
+        height: 11
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_115
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 84
+        width: 11
+        height: 12
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_116
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 84
+        width: 11
+        height: 11
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_117
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 80
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_118
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 81
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_119
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 81
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_120
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 81
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_121
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 81
+        width: 6
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_122
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 81
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_123
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 81
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_124
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 81
+        width: 6
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_125
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 81
+        width: 7
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_134
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 63
+        width: 21
+        height: 11
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_135
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 64
+        width: 11
+        height: 12
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_136
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 64
+        width: 12
+        height: 13
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_137
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 47
+        width: 5
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_138
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 47
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_139
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 47
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_140
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 47
+        width: 5
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_141
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 47
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_142
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 47
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_143
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 47
+        width: 5
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_144
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 47
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_145
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 47
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_146
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 47
+        width: 6
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_147
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 47
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_148
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 47
+        width: 4
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_149
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 43
+        width: 14
+        height: 14
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_150
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 43
+        width: 14
+        height: 14
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_151
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 44
+        width: 12
+        height: 12
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_153
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 26
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_154
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 26
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_155
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 26
+        width: 15
+        height: 6
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_156
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 26
+        width: 15
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_157
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 25
+        width: 15
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_158
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 24
+        width: 15
+        height: 6
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_159
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 23
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_160
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 23
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_161
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 23
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_162
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 6
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_163
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 7
+        width: 7
+        height: 9
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_164
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 7
+        width: 11
+        height: 9
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_165
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 7
+        width: 13
+        height: 9
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_166
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 7
+        width: 7
+        height: 5
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_161
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 271
+        width: 46
+        height: 7
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_161
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 22
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_162
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 45
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_163
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 24
+        width: 1
+        height: 6
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_164
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 7
+        width: 1
+        height: 4
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: original_spritesheet_157
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 72
+        width: 10
+        height: 4
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_158
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 68
+        width: 10
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_159
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 68
+        width: 10
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: original_spritesheet_160
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 68
+        width: 10
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 

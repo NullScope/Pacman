@@ -1,0 +1,11 @@
+#################
+## Unity
+#################
+
+/Temp
+/obj
+/library
+*.csproj
+*.unityproj
+*.sln
+*.suo

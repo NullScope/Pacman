@@ -1,0 +1,346 @@
+fileFormatVersion: 2
+guid: 91702a4f186d5444294b3e3011328761
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: wall_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+    - name: wall_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 11
+        width: 8
+        height: 8
+      alignment: 1
+      pivot: {x: 0, y: 1}
+  spritePackingTag: 
+  userData: 
