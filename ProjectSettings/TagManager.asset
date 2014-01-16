@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Point
   - Pacman Respawn
+  - Warp
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -47,7 +48,7 @@ TagManager:
   - name: Background
     userID: 2
     uniqueID: 1535931219
-    locked: 1
+    locked: 0
   - name: Wall
     userID: 8
     uniqueID: 817223381
@@ -55,7 +56,7 @@ TagManager:
   - name: Points
     userID: 7
     uniqueID: 4133436837
-    locked: 1
+    locked: 0
   - name: Player
     userID: 4
     uniqueID: 2511236001

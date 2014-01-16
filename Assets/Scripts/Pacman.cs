@@ -17,16 +17,12 @@ public class Pacman : MonoBehaviour {
 
     private bool isMoving = false;
     private Vector2 input;
-    private Vector3 startPosition;
-    private Vector2 endPosition;
-    private float t;
 	// Use this for initialization
 	void Start () {
 
         anim = GetComponent<Animator>();
 
-        tileX = Mathf.FloorToInt(transform.position.x);
-        tileY = Mathf.FloorToInt(-1 * transform.position.y);
+        updatePosition();
 
         if (gameController == null)
         {
@@ -84,7 +80,6 @@ public class Pacman : MonoBehaviour {
         isAlive = true;
         firstMove = true;
         anim.SetBool("Dead", false);
-        //transform.position = new Vector2(1, -1);
     }
 
     void playDeathBeep() 
@@ -94,9 +89,10 @@ public class Pacman : MonoBehaviour {
 
     public IEnumerator move(Transform transform)
     {
-        float newZ;
-
+        float newZ, t = 0;
+        Vector2 endPosition, startPosition;
         isMoving = true;
+
         startPosition = transform.position;
 
         // If its the first time Pacman moving from the respawn point,
@@ -130,18 +126,19 @@ public class Pacman : MonoBehaviour {
             transform.position = Vector2.Lerp(startPosition, endPosition, t);
 
             updatePosition();
+            updateAxis();
 
-            //Rotate pacman to face the current direction
+            //Rotate Pacman to face the current direction
             transform.Rotate(new Vector3(0, 0, -transform.eulerAngles.z), Space.World);
             transform.Rotate(new Vector3(0, 0, newZ), Space.World);
+
             anim.SetBool("Running", true);
-            yield return null;
+            yield return 0;
         }
         t = 0;
         isMoving = false;
         firstMove = false;
-        updateAxis();
-        yield return 0;
+        yield break;
     }
 
     //Check if the player pressed any axis button, ensure it's a valid move and update input accordingly
@@ -151,30 +148,26 @@ public class Pacman : MonoBehaviour {
         if (!isMoving)
         {
             if (Input.GetAxisRaw("Horizontal") != 0
-             && gameController.getTile(tileX + (int)Input.GetAxisRaw("Horizontal"), tileY).tag != "Wall")
+                && gameController.getTile(tileX + (int)Input.GetAxisRaw("Horizontal"), tileY) != 0)
             {
-                print("Horizontal: " + gameController.getTile(tileX + (int)Input.GetAxisRaw("Horizontal"), tileY).tag
-                    + " | tileX: " + tileX + " | tileY: " + tileY);
                 input.x = Input.GetAxisRaw("Horizontal");
                 input.y = 0;
             }
 
             if (Input.GetAxisRaw("Vertical") != 0
-             && gameController.getTile(tileX, tileY - (int)Input.GetAxisRaw("Vertical")).tag != "Wall")
+                && gameController.getTile(tileX, tileY - (int)Input.GetAxisRaw("Vertical")) != 0)
             {
-                print("Vertical: " + gameController.getTile(tileX, tileY - (int)Input.GetAxisRaw("Vertical")).tag
-                    + " | tileX: " + tileX + " | tileY: " + tileY);
                 input.x = 0;
                 input.y = Input.GetAxisRaw("Vertical");
             }
 
-            if (input.x != 0 && gameController.getTile(tileX + (int)input.x, tileY).tag == "Wall")
+            if (input.x != 0 && gameController.getTile(tileX + (int)input.x, tileY) == 0)
             {
                 input.x = 0;
             }
 
             if (input.y != 0
-             && gameController.getTile(tileX, tileY - (int)input.y).tag == "Wall")
+                && gameController.getTile(tileX, tileY - (int)input.y) == 0)
             {
                 input.y = 0;
             }
@@ -185,8 +178,11 @@ public class Pacman : MonoBehaviour {
     //So to fix it, always add/remove 0.25 (depending on direction) and round down
     private void updatePosition()
     {
-            tileX = Mathf.FloorToInt(transform.position.x - 0.25f);
-            tileY = Mathf.FloorToInt(-1 * transform.position.y - 0.25f);
+        //tileX = Mathf.FloorToInt(Vector2.Lerp(startPosition, endPosition, t).x - 0.25f);
+        //tileY = Mathf.FloorToInt(-1 * (Vector2.Lerp(startPosition, endPosition, t).y - 0.25f));
+        
+        tileX = Mathf.FloorToInt(transform.position.x);
+        tileY = Mathf.FloorToInt(-1 * transform.position.y);
     }
 
 }

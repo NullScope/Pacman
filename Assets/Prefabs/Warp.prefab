@@ -12,8 +12,8 @@ GameObject:
   - 114: {fileID: 11400000}
   - 61: {fileID: 6100000}
   m_Layer: 0
-  m_Name: Power Pellet
-  m_TagString: Power Pellet
+  m_Name: Warp
+  m_TagString: Warp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26, y: -26, z: 0}
+  m_LocalPosition: {x: 0, y: -17, z: 0}
   m_LocalScale: {x: 12.5, y: 12.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,13 +48,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d1ebeef8b641e844904d8dc381abf32, type: 3}
+  m_Script: {fileID: 11500000, guid: b505a6fe4d8970f4a89b690c38376fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
-  cost: 1
-  backgroundSprite: {fileID: 21300294, guid: a8abf0abf37cb774a89c74cd433c95cf, type: 3}
-  points: 1500
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -73,10 +70,10 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: -5
+  m_SortingLayer: -7
   m_SortingOrder: 0
-  m_SortingLayerID: 4133436837
-  m_Sprite: {fileID: 21300194, guid: a8abf0abf37cb774a89c74cd433c95cf, type: 3}
+  m_SortingLayerID: 1535931219
+  m_Sprite: {fileID: 21300294, guid: a8abf0abf37cb774a89c74cd433c95cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

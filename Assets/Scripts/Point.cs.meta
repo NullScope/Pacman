@@ -2,7 +2,9 @@ fileFormatVersion: 2
 guid: 7cd7000563391b1479189577e49ac615
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameController: {instanceID: 0}
+  - backgroundSprite: {fileID: 21300294, guid: a8abf0abf37cb774a89c74cd433c95cf, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

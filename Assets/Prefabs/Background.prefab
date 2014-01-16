@@ -40,6 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
+  cost: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

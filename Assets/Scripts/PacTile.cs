@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PacTile : MonoBehaviour {
     public GameController gameController;
+    public byte cost;
     
     // Use this for initialization
 	public void Start () {
@@ -11,7 +12,7 @@ public class PacTile : MonoBehaviour {
             GameObject Camera = GameObject.Find("Main Camera");
             gameController = Camera.GetComponent<GameController>();
         }
-        gameController.addTile(gameObject.transform.position.x, -1*gameObject.transform.position.y, gameObject);
+        gameController.addTile((int)gameObject.transform.position.x, (int)(-1*gameObject.transform.position.y), cost);
 	}
 
 	// Update is called once per frame

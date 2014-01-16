@@ -3,9 +3,11 @@ using System.Collections;
 
 public class GhostAI : MonoBehaviour {
 
+    #region Variables
     private Animator anim;
-	
-	// Use this for initialization
+    #endregion
+
+    // Use this for initialization
     public void Start()
     {
         anim = GetComponent<Animator>(); 
