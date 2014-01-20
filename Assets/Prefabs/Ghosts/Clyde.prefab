@@ -82,6 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8ac2e15c466aa48bb001992bee13ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugPathColor: {r: .996078432, g: .796078444, b: .200000003, a: 1}
+  DebugPath: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

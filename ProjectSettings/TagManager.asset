@@ -52,7 +52,7 @@ TagManager:
   - name: Wall
     userID: 8
     uniqueID: 817223381
-    locked: 1
+    locked: 0
   - name: Points
     userID: 7
     uniqueID: 4133436837

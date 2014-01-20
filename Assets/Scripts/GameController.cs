@@ -48,9 +48,7 @@ public class GameController : MonoBehaviour
 
     // Use this for initialization
 	void Start () {
-        
         InitializePathFinder();
-        
 	}
 
     void OnApplicationQuit()
@@ -60,33 +58,7 @@ public class GameController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Tiles.Length == 1008 && !bWorking)
-        {
-            RequestPathFind(Blinky.transform.position, new Vector2(26, 32), Blinky);
-            bWorking = true;
-        }
-        for (int i = 0; i < pathFind.closedNodes.Count; i++)
-        {
-            Debug.DrawLine(new Vector3(pathFind.closedNodes[i].x, pathFind.closedNodes[i].y * -1), new Vector3(pathFind.closedNodes[i].x + 1, pathFind.closedNodes[i].y * -1), Color.green, 0.1f, false);
-            Debug.DrawLine(new Vector3(pathFind.closedNodes[i].x, -1 * pathFind.closedNodes[i].y - 1), new Vector3(pathFind.closedNodes[i].x + 1, -1 * pathFind.closedNodes[i].y - 1), Color.green, 0.1f, false);
-            Debug.DrawLine(new Vector3(pathFind.closedNodes[i].x, pathFind.closedNodes[i].y * -1), new Vector3(pathFind.closedNodes[i].x, -1 * pathFind.closedNodes[i].y - 1), Color.green, 0.1f, false);
-            Debug.DrawLine(new Vector3(pathFind.closedNodes[i].x + 1, pathFind.closedNodes[i].y * -1), new Vector3(pathFind.closedNodes[i].x + 1, -1 * pathFind.closedNodes[i].y - 1), Color.green, 0.1f, false);
-
-        }
-
-        for (int i = 0; i < pathFind.openNodes.Count; i++)
-        {
-            Debug.DrawLine(new Vector3(pathFind.openNodes[i].x, pathFind.openNodes[i].y * -1), new Vector3(pathFind.openNodes[i].x + 1, -1 * pathFind.openNodes[i].y - 1), Color.blue, 0.1f, false);
-            Debug.DrawLine(new Vector3(pathFind.openNodes[i].x + 1, pathFind.openNodes[i].y * -1), new Vector3(pathFind.openNodes[i].x, -1 * pathFind.openNodes[i].y - 1), Color.blue, 0.1f, false);
-        }
-
-        Debug.DrawLine(new Vector3(pathFind.parentNode.x, pathFind.parentNode.y * -1), new Vector3(pathFind.parentNode.x + 1, pathFind.parentNode.y * -1), Color.red, 0.1f, false);
-        Debug.DrawLine(new Vector3(pathFind.parentNode.x, -1 * pathFind.parentNode.y - 1), new Vector3(pathFind.parentNode.x + 1, -1 * pathFind.parentNode.y - 1), Color.red, 0.1f, false);
-        Debug.DrawLine(new Vector3(pathFind.parentNode.x, pathFind.parentNode.y * -1), new Vector3(pathFind.parentNode.x, -1 * pathFind.parentNode.y - 1), Color.red, 0.1f, false);
-        Debug.DrawLine(new Vector3(pathFind.parentNode.x + 1, pathFind.parentNode.y * -1), new Vector3(pathFind.parentNode.x + 1, -1 * pathFind.parentNode.y - 1), Color.red, 0.1f, false);
-
-        
+    {   
         //print(player.tileX + " | " + player.tileY);
         updatePowerPellet();
 	}
@@ -181,18 +153,19 @@ public class GameController : MonoBehaviour
         pathFinder.WorkerSupportsCancellation = true;
         // Attach event handlers to the BackgroundWorker object.
         pathFinder.DoWork +=
-            new System.ComponentModel.DoWorkEventHandler(pathFind.findPath);
+            new System.ComponentModel.DoWorkEventHandler(pathFind.DoWork);
         pathFinder.RunWorkerCompleted +=
-            new System.ComponentModel.RunWorkerCompletedEventHandler(pathFind.completed);
+            new System.ComponentModel.RunWorkerCompletedEventHandler(pathFind.WorkerCompleted);
     }
 
-    private void RequestPathFind(Vector2 startPoint, Vector2 endPoint, GhostAI caller)
+    private void RequestPathFind(Vector2 startPoint, Vector2 endPoint, GhostAI caller, int direction)
     {
         List<object> arguments = new List<object>();
         arguments.Add(startPoint);
         arguments.Add(endPoint);
         arguments.Add(caller);
         arguments.Add(Tiles);
+        arguments.Add(new sbyte[2,2]{{1,0}, {0,-1}});
         pathFinder.RunWorkerAsync(arguments);
     }
 
@@ -200,10 +173,5 @@ public class GameController : MonoBehaviour
     {
         bCompleted = true;
         print("COMPLETED PATH FINDING " + path.Count + " NODES");
-    }
-
-    public void printOpenList(List<PathFind.Node> openList)
-    {
-
     }
 }

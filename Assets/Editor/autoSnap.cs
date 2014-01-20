@@ -2,17 +2,22 @@
 using UnityEditor;
 
 [InitializeOnLoad]
-public class AutoSnap : EditorWindow
+[ExecuteInEditMode]
+[System.Serializable]
+public class autoSnap : EditorWindow
 {
+    [SerializeField]
     static private Vector3 prevPosition;
+    [SerializeField]
     static private bool doSnap = true;
+    [SerializeField]
     static private float snapValue = 1;
     
     [MenuItem("Edit/Auto Snap %_l")]
 
     static void Init()
     {
-        var window = (AutoSnap)EditorWindow.GetWindow(typeof(AutoSnap));
+        EditorWindow window = (autoSnap)EditorWindow.GetWindow(typeof(autoSnap));
         window.maxSize = new Vector2(200, 100);
         EditorApplication.update = Update;
     }
@@ -26,7 +31,6 @@ public class AutoSnap : EditorWindow
     static public void Update()
     {
         if (doSnap
-        && !EditorApplication.isPlaying
         && Selection.transforms.Length > 0
         && Selection.transforms[0].position != prevPosition)
         {

@@ -5,7 +5,6 @@ public class Pacman : MonoBehaviour {
 
     public GameController gameController;
     private Animator anim;
-    private int vertical, horizontal;
 
     [HideInInspector]
     public int tileX, tileY;
@@ -34,11 +33,7 @@ public class Pacman : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (gameController == null)
-        {
-            GameObject Camera = GameObject.Find("Main Camera");
-            gameController = Camera.GetComponent<GameController>();
-        }
+
         if (isAlive == true)
         {
             updateAxis();
