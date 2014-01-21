@@ -4,6 +4,7 @@ using System.Collections;
 public class PacTile : MonoBehaviour {
     public GameController gameController;
     public byte cost;
+    public bool isIntersection, allowUpwards, allowBottom, allowLeft, allowRight;
     
     // Use this for initialization
 	public void Start () {

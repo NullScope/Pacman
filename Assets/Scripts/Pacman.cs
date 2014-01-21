@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class Pacman : MonoBehaviour {
@@ -33,7 +34,6 @@ public class Pacman : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
         if (isAlive == true)
         {
             updateAxis();
@@ -176,8 +176,8 @@ public class Pacman : MonoBehaviour {
         //tileX = Mathf.FloorToInt(Vector2.Lerp(startPosition, endPosition, t).x - 0.25f);
         //tileY = Mathf.FloorToInt(-1 * (Vector2.Lerp(startPosition, endPosition, t).y - 0.25f));
         
-        tileX = Mathf.FloorToInt(transform.position.x);
-        tileY = Mathf.FloorToInt(-1 * transform.position.y);
+        tileX = (int)transform.position.x;
+        tileY = (int)Math.Abs(transform.position.y);
     }
 
 }

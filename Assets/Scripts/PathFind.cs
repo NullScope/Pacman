@@ -60,9 +60,9 @@ public class PathFind {
         // Set the parent and starting point from arguments.
         parentNode.G = 0;
         parentNode.x = (int)startPoint.x;
-        parentNode.y = (int)startPoint.y * -1;
-        parentNode.Px = (int)startPoint.x;
-        parentNode.Py = (int)startPoint.y * -1;
+        parentNode.y = (int)Math.Abs(startPoint.y);
+        parentNode.Px = parentNode.x;
+        parentNode.Py = parentNode.y;
         parentNode.H = heuristic * (Math.Abs(parentNode.x - (int)endPoint.x) + Math.Abs(parentNode.y - (int)endPoint.y));
         parentNode.H = GetTieBreakerHeuristic(parentNode, parentNode.H, startPoint, endPoint);
         parentNode.F = parentNode.G + parentNode.H;
