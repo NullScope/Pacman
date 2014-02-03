@@ -13,6 +13,7 @@ public class Point : PacTile {
 	// Update is called once per frame
 	new public void Update () {
         base.Update();
+        
 	}
 
     public void OnTriggerEnter2D(Collider2D coll)

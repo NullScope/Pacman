@@ -14,10 +14,10 @@ public class BlinkyAI : GhostAI {
 	new void Update () {
         base.Update();
         
-        if (gameController.Tiles.Length == 1008 && !bWorking)
+        /*if (gameController.Tiles.Length == 1008 && !bWorking)
         {
-            RequestPathFind(transform.position, new Vector2(25, 0), this, new sbyte[1, 2] { { -1, 0 } }, false);
+            RequestPathFind(transform.position, new Vector2(14, 26), this, new sbyte[1, 2] { { -1, 0 } }, false);
             bWorking = true;
-        }
+        }*/
 	}
 }

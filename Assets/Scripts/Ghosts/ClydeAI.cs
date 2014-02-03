@@ -12,10 +12,10 @@ public class ClydeAI : GhostAI {
 	new void Update () {
         base.Update();
 
-        if (gameController.Tiles.Length == 1008 && !bWorking)
+        /*if (gameController.Tiles.Length == 1008 && !bWorking)
         {
             RequestPathFind(transform.position, new Vector2(0, 35), this, new sbyte[1, 2] { { 0, 0 } }, true);
             bWorking = true;
-        }
+        }*/
     }
 }

@@ -11,6 +11,7 @@ TagManager:
   - Point
   - Pacman Respawn
   - Warp
+  - Ghost House
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -52,11 +53,11 @@ TagManager:
   - name: Wall
     userID: 8
     uniqueID: 817223381
-    locked: 0
+    locked: 1
   - name: Points
     userID: 7
     uniqueID: 4133436837
-    locked: 0
+    locked: 1
   - name: Player
     userID: 4
     uniqueID: 2511236001

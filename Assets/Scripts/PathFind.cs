@@ -38,22 +38,24 @@ public class PathFind {
     #endregion
 
     // The arguments passed to this function are 
-    // Vector2 startPoint, Vector2 endPoint, GameObject caller, byte grid.
+    // Vector2 startPoint, Vector2 endPoint, GhostAI caller, byte grid.
     public void DoWork(object sender, DoWorkEventArgs e)
     {
         worker = sender as BackgroundWorker;
         List<object> argumentList = e.Argument as List<object>;
         caller = (GhostAI)argumentList[2];
 
-        findPath((Vector2)argumentList[0], (Vector2)argumentList[1], (byte[,])argumentList[3], (sbyte[,])argumentList[4], (bool)argumentList[5]);
+        findPath((Vector2)argumentList[0], (Vector2)argumentList[1], (byte[,])argumentList[3], (List<GhostAI.Directions>)argumentList[4], (bool)argumentList[5]);
     }
 
-    public void findPath(Vector2 startPoint, Vector2 endPoint, byte[,] grid, sbyte[,] bannedDirections, bool IsInsideHouse)
+    public void findPath(Vector2 startPoint, Vector2 endPoint, byte[,] grid, List<GhostAI.Directions> bannedDirections, bool IsInsideHouse)
     {
         int heuristic = 1;
         bool IsFirstParent = true;
         bool bPathFound = false;
-
+        lowestNode = new Node();
+        parentNode = new Node();
+        bFoundInList = false;
         openNodes.Clear();
         closedNodes.Clear();
 
@@ -110,14 +112,49 @@ public class PathFind {
                 // and see if it is not an allowed direction.
                 if ((parentNode.x == (int)startPoint.x) && (parentNode.y == (int)startPoint.y * -1))
                 {
-                    for (int j = 0; j < bannedDirections.GetLength(0); j++)
+                    foreach (GhostAI.Directions bannedDirection in bannedDirections)
+                    {
+                        switch (bannedDirection)
+                        {
+                            case(GhostAI.Directions.Up):
+                                if (directions[i, 0] == 0 && directions[i, 1] == -1)
+                                {
+                                    IsInvalidDirection = true;
+                                }
+                                break;
+                            case (GhostAI.Directions.Left):
+                                if (directions[i, 0] == -1 && directions[i, 1] == 0)
+                                {
+                                    IsInvalidDirection = true;
+                                }
+                                break;
+                            case(GhostAI.Directions.Down):
+                                if (directions[i, 0] == 0 && directions[i, 1] == 1)
+                                {
+                                    IsInvalidDirection = true;
+                                }
+                                break;
+                            case(GhostAI.Directions.Right):
+                                if (directions[i, 0] == 1 && directions[i, 1] == 0)
+                                {
+                                    IsInvalidDirection = true;
+                                }
+                                break;
+                        }
+                        
+                        if (IsInvalidDirection)
+                        {
+                            break;
+                        }
+                    }
+                    /*for (int j = 0; j < bannedDirections.Count; j++)
                     {
                         if (directions[i, 0] == bannedDirections[j, 0] && directions[i, 1] == bannedDirections[j, 1])
                         {
                             IsInvalidDirection = true;
                             break;
                         }
-                    }
+                    }*/
                 }
 
                 if (IsInvalidDirection)
@@ -229,6 +266,8 @@ public class PathFind {
                     closedNodes.RemoveAt(i);
                 }
             }
+            closedNodes.Add(lowestNode);
+            closedNodes.RemoveAt(0);
         }
     }
 

@@ -10,17 +10,18 @@ public class GameController : MonoBehaviour
 
     #region Variables
     private int score;
-    private PathFind pathFind = new PathFind();
-    private BackgroundWorker pathFinder = new BackgroundWorker();
+    private int level;
+    public int lifes;
+    private int modeCount;
+    private float modeTimer;
     private byte[,] tiles = new byte[28, 36];
+    private PacTile[,] pacTiles = new PacTile[28, 36];
     public Pacman player;
     public GhostAI Blinky, Clyde, Inky, Pinky;
-    public int lifes;
+    private GhostAI.Modes currentMode;
     public float PowerPellet;
     private float PPtimeLeft;
     private bool bPowerPellet;
-    private bool bCompleted;
-    public bool bWorking;
     #endregion
 
     #region Properties
@@ -31,6 +32,14 @@ public class GameController : MonoBehaviour
             return tiles;
         }
        
+    }
+
+    public PacTile[,] PacTiles
+    {
+        get
+        {
+            return pacTiles;
+        }
     }
 
     public int Score
@@ -47,33 +56,19 @@ public class GameController : MonoBehaviour
     #endregion
 
     // Use this for initialization
-	void Start () {
-        InitializePathFinder();
-	}
-
-    void OnApplicationQuit()
+	void Start () 
     {
-        pathFinder.CancelAsync();
-    }
+        currentMode = GhostAI.Modes.Scatter;
+        //Increase level
+        level++;   
+	}
 
     // Update is called once per frame
     void Update()
     {   
-        //print(player.tileX + " | " + player.tileY);
         updatePowerPellet();
+        updateModeTimer();
 	}
-
-    public void CollisionWithGhost(GhostAI ghost)
-    {
-        if (bPowerPellet)
-        {
-            ghost.Death();
-        }
-        else
-        {
-            player.Death();
-        }
-    }
 
     void updatePowerPellet()
     {
@@ -93,6 +88,50 @@ public class GameController : MonoBehaviour
 
             }
         }
+    }
+
+    void updateModeTimer()
+    {
+        modeTimer += Time.deltaTime;
+
+        switch (modeCount)
+        {
+            case(0):
+                if (level >= 5)
+                {
+                    if (modeTimer >= 5f)
+                    {
+                        changeGhostModes(GhostAI.Modes.Chase);
+                    }
+                }
+                else
+                {
+                    if (modeTimer >= 7f)
+                    {
+                        changeGhostModes(GhostAI.Modes.Chase);
+                    }
+                }
+                break;
+            case(1):
+                break;
+            case(2):
+                break;
+            case(3):
+                break;
+            case(4):
+                break;
+            case(5):
+                break;
+            case(6):
+                break;
+            case(7):
+                break;
+        }
+    }
+
+    public void changeGhostModes(GhostAI.Modes newMode)
+    {
+
     }
 
     public void startPowerPellet()
@@ -141,37 +180,23 @@ public class GameController : MonoBehaviour
         tiles[x, y] = cost;
     }
 
-    public byte getTile(int x, int y)
+    public void AddPacTile(int x, int y, PacTile pacTile)
     {
-        return tiles[x, y];
+        pacTiles[x, y] = pacTile;
     }
 
-    // Path Finder
-    private void InitializePathFinder()
+    public PacTile GetPacTile(int x, int y)
     {
-        pathFind.gameController = this;
-        pathFinder.WorkerSupportsCancellation = true;
-        // Attach event handlers to the BackgroundWorker object.
-        pathFinder.DoWork +=
-            new System.ComponentModel.DoWorkEventHandler(pathFind.DoWork);
-        pathFinder.RunWorkerCompleted +=
-            new System.ComponentModel.RunWorkerCompletedEventHandler(pathFind.WorkerCompleted);
+        return PacTiles[x, y];
     }
 
-    private void RequestPathFind(Vector2 startPoint, Vector2 endPoint, GhostAI caller, int direction)
+    public PacTile GetPacTile(Vector2 position)
     {
-        List<object> arguments = new List<object>();
-        arguments.Add(startPoint);
-        arguments.Add(endPoint);
-        arguments.Add(caller);
-        arguments.Add(Tiles);
-        arguments.Add(new sbyte[2,2]{{1,0}, {0,-1}});
-        pathFinder.RunWorkerAsync(arguments);
+        return PacTiles[(int)position.x, (int)position.y];
     }
 
-    public void PathFinderCompleted(List<PathFind.Node> path, GhostAI caller)
+    public byte getTile(float x, float y)
     {
-        bCompleted = true;
-        print("COMPLETED PATH FINDING " + path.Count + " NODES");
+        return tiles[(int)x, (int)y];
     }
 }

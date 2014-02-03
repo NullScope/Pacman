@@ -60,7 +60,7 @@ MonoBehaviour:
   allowLeft: 0
   allowRight: 0
   backgroundSprite: {fileID: 21300294, guid: a8abf0abf37cb774a89c74cd433c95cf, type: 3}
-  points: 1500
+  points: 50
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
