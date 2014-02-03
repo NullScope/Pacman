@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Ghost House Door
-  m_TagString: Wall
+  m_TagString: Ghost House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,6 +53,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
   cost: 2
+  isIntersection: 0
+  allowUpwards: 0
+  allowBottom: 0
+  allowLeft: 0
+  allowRight: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

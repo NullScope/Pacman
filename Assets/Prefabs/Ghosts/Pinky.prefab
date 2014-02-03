@@ -66,10 +66,10 @@ Animator:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fc8a88e4a91c14b479be08905a24f321, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2fa721f3645ff304db8b76d4d4e408ef, type: 2}
   m_CullingMode: 0
-  m_ApplyRootMotion: 1
-  m_AnimatePhysics: 0
+  m_ApplyRootMotion: 0
+  m_AnimatePhysics: 1
   m_HasTransformHierarchy: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -83,7 +83,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugPathColor: {r: .996078432, g: .596078455, b: .796078444, a: 1}
-  DebugPath: 0
+  DebugPath: 1
+  startMode: 6
+  startDirection: 1
+  scatterTile: {x: 2, y: 0}
+  respawnTile: {x: 13, y: -14}
+  houseTile: {x: 14, y: -17.5}
+  isVulnerable: 0
+  moveSpeed: 10
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

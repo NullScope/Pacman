@@ -68,7 +68,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ead9b3ff1dfdd874596f1497c0241fbb, type: 2}
   m_CullingMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_AnimatePhysics: 1
   m_HasTransformHierarchy: 1
 --- !u!114 &11400000
@@ -83,7 +83,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugPathColor: {r: .996078432, g: 0, b: 0, a: 1}
-  DebugPath: 0
+  DebugPath: 1
+  startMode: 0
+  startDirection: 1
+  scatterTile: {x: 25, y: 0}
+  respawnTile: {x: 13, y: 14}
+  houseTile: {x: 14, y: -17.5}
+  isVulnerable: 0
+  moveSpeed: 10
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

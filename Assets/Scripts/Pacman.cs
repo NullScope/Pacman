@@ -4,11 +4,12 @@ using System.Collections;
 
 public class Pacman : MonoBehaviour {
 
+    #region Variables
     public GameController gameController;
     private Animator anim;
 
     [HideInInspector]
-    public int tileX, tileY;
+    public Vector2 tile;
 
     private bool isAlive = true;
     public bool firstMove;
@@ -17,6 +18,8 @@ public class Pacman : MonoBehaviour {
 
     private bool isMoving = false;
     private Vector2 input;
+    #endregion
+
 	// Use this for initialization
 	void Start () {
 
@@ -39,24 +42,16 @@ public class Pacman : MonoBehaviour {
             updateAxis();
             if (!isMoving && input != Vector2.zero)
             {
-                StartCoroutine(move(transform));
+                StartCoroutine(move());
             }
         }
 
-        //Always stop Running animation after Pacman moves a tile
+        // Always stop Running animation after Pacman moves a tile.
         if (input == Vector2.zero)
         {
             anim.SetBool("Running", false);
         }
 	}
-
-    void OnTriggerEnter2D(Collider2D coll) {
-        if (coll.gameObject.tag == "Enemy")
-        {
-            //if collision was with a ghost, Pacman dies
-            gameController.CollisionWithGhost(coll.gameObject.GetComponent<GhostAI>());
-        }
-    }
 
     //Kills Pacman and plays death animation
     public void Death()
@@ -77,19 +72,19 @@ public class Pacman : MonoBehaviour {
         anim.SetBool("Dead", false);
     }
 
-    void playDeathBeep() 
+    void playDeathBeep()
     {
 
     }
 
-    public IEnumerator move(Transform transform)
+    public IEnumerator move()
     {
         float newZ, t = 0;
         Vector2 endPosition, startPosition;
         isMoving = true;
 
         startPosition = transform.position;
-
+        
         // If its the first time Pacman moving from the respawn point,
         // Pacman needs to move 0.5f instead of 1.0f because of the respawn location
         if (firstMove){
@@ -97,7 +92,7 @@ public class Pacman : MonoBehaviour {
                                       startPosition.y + System.Math.Sign(input.y));
         }else{
             endPosition = new Vector2(startPosition.x + System.Math.Sign(input.x),
-                          startPosition.y + System.Math.Sign(input.y));
+                                      startPosition.y + System.Math.Sign(input.y));
         }
 
         if (input.x != 0)
@@ -143,26 +138,31 @@ public class Pacman : MonoBehaviour {
         if (!isMoving)
         {
             if (Input.GetAxisRaw("Horizontal") != 0
-                && gameController.getTile(tileX + (int)Input.GetAxisRaw("Horizontal"), tileY) != 0)
+                && gameController.getTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 0
+                && gameController.getTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 2)
             {
                 input.x = Input.GetAxisRaw("Horizontal");
                 input.y = 0;
             }
 
             if (Input.GetAxisRaw("Vertical") != 0
-                && gameController.getTile(tileX, tileY - (int)Input.GetAxisRaw("Vertical")) != 0)
+                && gameController.getTile(tile.x, tile.y - Input.GetAxisRaw("Vertical")) != 0
+                && gameController.getTile(tile.x, tile.y - Input.GetAxisRaw("Vertical")) != 2)
             {
                 input.x = 0;
                 input.y = Input.GetAxisRaw("Vertical");
             }
 
-            if (input.x != 0 && gameController.getTile(tileX + (int)input.x, tileY) == 0)
+            if (input.x != 0
+                && (gameController.getTile(tile.x + input.x, tile.y) == 0
+                || gameController.getTile(tile.x + input.x, tile.y) == 2))
             {
                 input.x = 0;
             }
 
             if (input.y != 0
-                && gameController.getTile(tileX, tileY - (int)input.y) == 0)
+                && (gameController.getTile(tile.x, tile.y - input.y) == 0
+                || gameController.getTile(tile.x, tile.y - input.y) == 2))
             {
                 input.y = 0;
             }
@@ -175,9 +175,7 @@ public class Pacman : MonoBehaviour {
     {
         //tileX = Mathf.FloorToInt(Vector2.Lerp(startPosition, endPosition, t).x - 0.25f);
         //tileY = Mathf.FloorToInt(-1 * (Vector2.Lerp(startPosition, endPosition, t).y - 0.25f));
-        
-        tileX = (int)transform.position.x;
-        tileY = (int)Math.Abs(transform.position.y);
+        tile = new Vector2((int)transform.position.x, (int)Math.Abs(transform.position.y));
     }
 
 }
