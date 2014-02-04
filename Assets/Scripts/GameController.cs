@@ -93,7 +93,7 @@ public class GameController : MonoBehaviour
     void updateModeTimer()
     {
         modeTimer += Time.deltaTime;
-
+        print("TIMER: "+modeTimer);
         switch (modeCount)
         {
             case(0):
@@ -102,6 +102,8 @@ public class GameController : MonoBehaviour
                     if (modeTimer >= 5f)
                     {
                         changeGhostModes(GhostAI.Modes.Chase);
+                        modeTimer = 0;
+                        modeCount++;
                     }
                 }
                 else
@@ -109,29 +111,120 @@ public class GameController : MonoBehaviour
                     if (modeTimer >= 7f)
                     {
                         changeGhostModes(GhostAI.Modes.Chase);
+                        modeTimer = 0;
+                        modeCount++;
                     }
                 }
                 break;
             case(1):
+                if (modeTimer >= 20f)
+                {
+                    changeGhostModes(GhostAI.Modes.Scatter);
+                    modeTimer = 0;
+                    modeCount++;
+                }
                 break;
             case(2):
+                if (level >= 5)
+                {
+                    if (modeTimer >= 5f)
+                    {
+                        changeGhostModes(GhostAI.Modes.Chase);
+                        modeTimer = 0;
+                        modeCount++;
+                    }
+                }
+                else
+                {
+                    if (modeTimer >= 7f)
+                    {
+                        changeGhostModes(GhostAI.Modes.Chase);
+                        modeTimer = 0;
+                        modeCount++;
+                    }
+                }
                 break;
             case(3):
+                if (modeTimer >= 20f)
+                {
+                    changeGhostModes(GhostAI.Modes.Scatter);
+                    modeTimer = 0;
+                    modeCount++;
+                }
                 break;
             case(4):
+                if (modeTimer >= 5f)
+                {
+                    changeGhostModes(GhostAI.Modes.Chase);
+                    modeTimer = 0;
+                    modeCount++;
+                }
                 break;
             case(5):
+                if (level >= 2 && level <= 4)
+                {
+                    if (modeTimer >= 1033f)
+                    {
+                        changeGhostModes(GhostAI.Modes.Scatter);
+                        modeTimer = 0;
+                        modeCount++;
+                    }
+                }
+                else
+                {
+                    if (level >= 5)
+                    {
+                        if (modeTimer >= 1037f)
+                        {
+                            changeGhostModes(GhostAI.Modes.Scatter);
+                            modeTimer = 0;
+                            modeCount++;
+                        }
+                    }
+                    else
+                    {
+                        if (modeTimer >= 20f)
+                        {
+                            changeGhostModes(GhostAI.Modes.Scatter);
+                            modeTimer = 0;
+                            modeCount++;
+                        }
+                    }
+
+                }
                 break;
             case(6):
+                if (level >= 2)
+                {
+                    if (modeTimer >= 1f/60f)
+                    {
+                        changeGhostModes(GhostAI.Modes.Scatter);
+                        modeTimer = 0;
+                        modeCount++;
+                    }
+                }
+                else
+                {
+                    if (modeTimer >= 5f)
+                    {
+                        changeGhostModes(GhostAI.Modes.Scatter);
+                        modeTimer = 0;
+                        modeCount++;
+                    }
+                }
                 break;
             case(7):
+                // Infinite
                 break;
         }
     }
 
     public void changeGhostModes(GhostAI.Modes newMode)
     {
-
+        Blinky.setCycleMode(newMode);
+        Pinky.setCycleMode(newMode);
+        Inky.setCycleMode(newMode);
+        Clyde.setCycleMode(newMode);
     }
 
     public void startPowerPellet()

@@ -557,7 +557,36 @@ public class GhostAI : MonoBehaviour {
 
     public void setMode(Modes newMode)
     {
+        // If currentMode is not Idle, Entering or Leaving, revert direction
+        if (currentMode != Modes.Idle && currentMode != Modes.Entering && currentMode != Modes.Leaving)
+        {
+            switch (currentDirection)
+            {
+                case (Directions.Up):
+                    currentDirection = Directions.Down;
+                    break;
+                case (Directions.Left):
+                    currentDirection = Directions.Right;
+                    break;
+                case (Directions.Down):
+                    currentDirection = Directions.Up;
+                    break;
+                case (Directions.Right):
+                    currentDirection = Directions.Left;
+                    break;
+            }
+        }
+
         currentMode = newMode;
+    }
+
+    public void setCycleMode(Modes newMode)
+    {
+        // If currentMode is not Idle, Entering, Leaving or Respawning, set new mode
+        if (currentMode != Modes.Idle && currentMode != Modes.Entering && currentMode != Modes.Leaving && currentMode != Modes.Respawning)
+        {
+            setMode(newMode);
+        }
     }
 
     // Sets Direction parameter
