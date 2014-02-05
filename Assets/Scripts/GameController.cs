@@ -221,10 +221,10 @@ public class GameController : MonoBehaviour
 
     public void changeGhostModes(GhostAI.Modes newMode)
     {
-        Blinky.setCycleMode(newMode);
-        Pinky.setCycleMode(newMode);
-        Inky.setCycleMode(newMode);
-        Clyde.setCycleMode(newMode);
+        Blinky.setGlobalMode(newMode);
+        Pinky.setGlobalMode(newMode);
+        Inky.setGlobalMode(newMode);
+        Clyde.setGlobalMode(newMode);
     }
 
     public void startPowerPellet()

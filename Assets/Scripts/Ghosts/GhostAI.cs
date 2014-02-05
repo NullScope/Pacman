@@ -19,6 +19,7 @@ public class GhostAI : MonoBehaviour {
     private Animator anim;
 
     protected Modes currentMode;
+    protected Modes currentGlobalMode;
     public Modes startMode;
 
     protected Directions currentDirection;
@@ -229,7 +230,7 @@ public class GhostAI : MonoBehaviour {
                         // switch to the current game mode (Scatter/Chase/Frightened)
                         if (endPosition.y == respawnTile.y - 0.5f)
                         {
-                            setMode(Modes.Scatter);
+                            setMode(currentGlobalMode);
                         }
                     }
                 }
@@ -263,7 +264,7 @@ public class GhostAI : MonoBehaviour {
                             }
                             else
                             {
-                                setMode(Modes.Idle);
+                                setMode(currentGlobalMode);
                             }
                         }
                     }
@@ -580,13 +581,18 @@ public class GhostAI : MonoBehaviour {
         currentMode = newMode;
     }
 
-    public void setCycleMode(Modes newMode)
+    public void setGlobalMode(Modes newMode)
     {
         // If currentMode is not Idle, Entering, Leaving or Respawning, set new mode
-        if (currentMode != Modes.Idle && currentMode != Modes.Entering && currentMode != Modes.Leaving && currentMode != Modes.Respawning)
+        if (currentMode != Modes.Idle && currentMode != Modes.Entering && currentMode != Modes.Leaving)
         {
             setMode(newMode);
         }
+        else
+        {
+            currentGlobalMode = newMode;
+        }
+        
     }
 
     // Sets Direction parameter
@@ -614,7 +620,7 @@ public class GhostAI : MonoBehaviour {
         if (!vulnEnd)
         {
             isVulnerable = vulnEnd;
-            setMode(Modes.Scatter);
+            setMode(currentGlobalMode);
         }
     }
 
