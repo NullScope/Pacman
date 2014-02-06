@@ -387,6 +387,7 @@ public class GhostAI : MonoBehaviour {
                 targetedTile = respawnTile;
                 break;
         }
+        
 
         // Set the new square to move to.
         switch (currentDirection)
@@ -600,16 +601,16 @@ public class GhostAI : MonoBehaviour {
             switch (currentDirection)
             {
                 case (Directions.Up):
-                    currentDirection = Directions.Down;
+                    nextDirection = Directions.Down;
                     break;
                 case (Directions.Left):
-                    currentDirection = Directions.Right;
+                    nextDirection = Directions.Right;
                     break;
                 case (Directions.Down):
-                    currentDirection = Directions.Up;
+                    nextDirection = Directions.Up;
                     break;
                 case (Directions.Right):
-                    currentDirection = Directions.Left;
+                    nextDirection = Directions.Left;
                     break;
             }
         }
