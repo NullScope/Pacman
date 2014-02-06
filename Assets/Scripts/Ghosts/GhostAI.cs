@@ -18,7 +18,7 @@ public class GhostAI : MonoBehaviour {
 
     private Animator anim;
 
-    protected Modes currentMode;
+    public Modes currentMode;
     protected Modes currentGlobalMode;
     public Modes startMode;
 
@@ -44,6 +44,9 @@ public class GhostAI : MonoBehaviour {
     protected bool isMoving;
     private bool isFirstMove;
     public bool isVulnerable;
+    public bool isOutside;
+    public int dotCount;
+    public int dotLimit;
     public float moveSpeed;
     #endregion
 
@@ -63,6 +66,7 @@ public class GhostAI : MonoBehaviour {
         InitializePathFinder();
     }
 
+    /**DEPRECATED**/
     private void InitializePathFinder()
     {
         pathFind.gameController = gameController;
@@ -78,27 +82,61 @@ public class GhostAI : MonoBehaviour {
 	public void Update ()
     {
         updateVulnParameter();
+        updateTile();
         updatePosition();
-        if (!isMoving) 
-        {
-            if (currentMode != Modes.Idle && currentMode != Modes.Entering && currentMode != Modes.Leaving)
-            {
-                currentDirection = nextDirection;
-                nextDirection = FindNextDirection(transform.position, currentDirection, currentMode);
-                StartCoroutine(move(currentMode));
-            }
-            else
-            {
-                StartCoroutine(HouseMove(currentMode));
-            }
-        }
-        
-        if (DebugPath)
-        {
-            DebugPathFind();
-        }
-        
+        updateDotCount();
+        DebugPathFind();
 	}
+
+    public void updatePosition() 
+    {
+        if (isMoving)
+        {
+            return;
+        }
+
+        if (currentMode != Modes.Idle && currentMode != Modes.Entering && currentMode != Modes.Leaving)
+        {
+            currentDirection = nextDirection;
+            nextDirection = FindNextDirection(transform.position, currentDirection, currentMode);
+            StartCoroutine(move(currentMode));
+        }
+        else
+        {
+            StartCoroutine(HouseMove(currentMode));
+        }
+    }
+
+    public void updateDotCount()
+    {
+        if (gameController.bGlobalCounter)
+        {
+            return;
+        }
+
+        if (dotCount >= dotLimit && !isOutside)
+        {
+            leaveGhostHouse();
+        }
+    }
+
+    public void leaveGhostHouse()
+    {
+        StopAllCoroutines();
+        isMoving = false;
+        transform.position = houseTile;
+        setMode(Modes.Leaving);
+        isOutside = true;
+    }
+
+    public void enterGhostHouse()
+    {
+        StopAllCoroutines();
+        isMoving = false;
+        transform.position = respawnTile;
+        setMode(Modes.Entering);
+        isOutside = false;
+    }
 
     public IEnumerator move(Modes mode)
     {
@@ -108,7 +146,6 @@ public class GhostAI : MonoBehaviour {
         isMoving = true;
         startPosition = transform.position;
         setDirection((int)currentDirection);
-
         // Set the new square to move to.
         switch (currentDirection)
         {
@@ -166,7 +203,6 @@ public class GhostAI : MonoBehaviour {
             transform.position = Vector2.Lerp(startPosition, endPosition, t);
             yield return 0;
         }
-        t = 0;
         isMoving = false;
         yield break;
     }
@@ -264,7 +300,7 @@ public class GhostAI : MonoBehaviour {
                             }
                             else
                             {
-                                setMode(currentGlobalMode);
+                                setMode(Modes.Idle);
                             }
                         }
                     }
@@ -286,8 +322,8 @@ public class GhostAI : MonoBehaviour {
             transform.position = Vector2.Lerp(startPosition, endPosition, t);
             yield return 0;
         }
-        isMoving = false;
 
+        isMoving = false;
         yield break;
     }
 
@@ -300,7 +336,7 @@ public class GhostAI : MonoBehaviour {
     {
         Vector2 direction = startPoint - endPoint;
 
-        // If Direction is Left-
+        // If Direction is Left.
         if (direction.x == 1f)
         {
             return Directions.Left;
@@ -511,7 +547,7 @@ public class GhostAI : MonoBehaviour {
         return newDirection;
     }
 
-    private void updatePosition()
+    private void updateTile()
     {
         tile = new Vector2((int)transform.position.x, (int)Math.Abs(transform.position.y));
     }
@@ -577,8 +613,18 @@ public class GhostAI : MonoBehaviour {
                     break;
             }
         }
-
-        currentMode = newMode;
+        if (newMode != Modes.Leaving && currentMode != Modes.Idle && currentMode != Modes.Entering)
+        {
+            currentMode = newMode;
+        }
+        else
+        {
+            if (newMode == Modes.Leaving && currentMode == Modes.Idle)
+            {
+                currentMode = newMode;
+            }
+        }
+        
     }
 
     public void setGlobalMode(Modes newMode)
@@ -593,6 +639,11 @@ public class GhostAI : MonoBehaviour {
             currentGlobalMode = newMode;
         }
         
+    }
+
+    public void IncreaseDotCount()
+    {
+        dotCount++;
     }
 
     // Sets Direction parameter
@@ -614,12 +665,13 @@ public class GhostAI : MonoBehaviour {
     }
 
     // Sets Animator VulnerabilityEnding parameter
-    public void setVulnerabilityEnd(bool vulnEnd)
+    public void setVulnerabilityEnd(bool vulnEnd, bool changeMode)
     {
         anim.SetBool("VulnerableEnding", vulnEnd);
-        if (!vulnEnd)
+        
+        if (changeMode)
         {
-            isVulnerable = vulnEnd;
+            isVulnerable = false;
             setMode(currentGlobalMode);
         }
     }
@@ -639,6 +691,10 @@ public class GhostAI : MonoBehaviour {
 
     public void DebugPathFind()
     {
+        if (!DebugPath)
+        {
+            return;
+        }
         var debugTile = new Vector2();
 
         switch (currentMode)

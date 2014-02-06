@@ -84,12 +84,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DebugPathColor: {r: .996078432, g: .596078455, b: .796078444, a: 1}
   DebugPath: 1
+  currentMode: 6
   startMode: 6
   startDirection: 1
   scatterTile: {x: 2, y: 0}
   respawnTile: {x: 13, y: -14}
   houseTile: {x: 14, y: -17.5}
   isVulnerable: 0
+  isOutside: 0
+  dotCount: 0
+  dotLimit: 0
   moveSpeed: 10
 --- !u!212 &21200000
 SpriteRenderer:

@@ -61,6 +61,7 @@ public class Pacman : MonoBehaviour {
         anim.SetBool("Running", false);
         anim.SetBool("Dead", true);
         input = Vector2.zero;
+        gameController.PacmanDeath();
     }
 
     //Sets Pacman position to respawn

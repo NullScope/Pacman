@@ -6,11 +6,6 @@ public class PowerPellet : Point {
 	// Use this for initialization
 	new public void Start () {
         base.Start();
-        if (gameController == null)
-        {
-            GameObject Camera = GameObject.Find("Main Camera");
-            gameController = Camera.GetComponent<GameController>();
-        }
 	}
 	
 	// Update is called once per frame
@@ -24,7 +19,7 @@ public class PowerPellet : Point {
 
         if (coll.gameObject.tag == "Player")
         {
-            //if collision was with pacman, make ghosts vulnerable and increase score
+            //if collision was with pacman, make the ghosts vulnerable
             gameController.startPowerPellet();
         }
     }

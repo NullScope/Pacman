@@ -12,14 +12,4 @@ public class PacDots : Point {
 	new void Update () {
         base.Update();
 	}
-
-    new void OnTriggerEnter2D(Collider2D coll)
-    {
-        base.OnTriggerEnter2D(coll);
-        if (coll.gameObject.tag == "Player")
-        {
-            //if collision was with pacman, increase score
-
-        }
-    }
 }

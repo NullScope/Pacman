@@ -29,5 +29,6 @@ public class Point : PacTile {
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = backgroundSprite;
         gameController.Score += points;
+        gameController.updateDotCounter();
     }
 }

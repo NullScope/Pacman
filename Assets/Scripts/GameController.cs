@@ -12,16 +12,20 @@ public class GameController : MonoBehaviour
     private int score;
     private int level;
     public int lifes;
+    private int globalDotCount;
     private int modeCount;
     private float modeTimer;
+    private float houseTimer;
     private byte[,] tiles = new byte[28, 36];
     private PacTile[,] pacTiles = new PacTile[28, 36];
     public Pacman player;
     public GhostAI Blinky, Clyde, Inky, Pinky;
+    public GhostAI.Modes startMode;
     private GhostAI.Modes currentMode;
-    public float PowerPellet;
+    public float PowerPelletTime;
     private float PPtimeLeft;
     private bool bPowerPellet;
+    public bool bGlobalCounter;
     #endregion
 
     #region Properties
@@ -58,9 +62,9 @@ public class GameController : MonoBehaviour
     // Use this for initialization
 	void Start () 
     {
-        currentMode = GhostAI.Modes.Scatter;
+        currentMode = startMode;
         //Increase level
-        level++;   
+        level++;
 	}
 
     // Update is called once per frame
@@ -68,32 +72,138 @@ public class GameController : MonoBehaviour
     {   
         updatePowerPellet();
         updateModeTimer();
+        updateHouseTimer();
 	}
 
     void updatePowerPellet()
     {
-        if (bPowerPellet == true)
+        if (!bPowerPellet)
         {
+            return;
+        }
 
-            PPtimeLeft -= Time.deltaTime;
+        PPtimeLeft -= Time.deltaTime;
 
-            if (PPtimeLeft <= PowerPellet * 0.2)
+        if (PPtimeLeft <= PowerPelletTime * 0.2)
+        {
+            setGhostsVulnEnd(true, false);
+        }
+
+        if (PPtimeLeft <= 0)
+        {
+            endPowerPellet();
+
+        }
+    }
+
+    void updateHouseTimer()
+    {
+        houseTimer += Time.deltaTime;
+
+        if (level >= 5)
+        {
+            if (houseTimer < 3f)
             {
-                setGhostsVulnEnd(true);
+                return;
+            }
+        }
+        else
+        {
+            if (houseTimer < 4f)
+            {
+                return;
+            }
+        }
+
+        houseTimer = 0;
+
+        if (!Pinky.isOutside)
+        {
+            Pinky.leaveGhostHouse();
+        }
+        else
+        {
+            if (!Inky.isOutside)
+            {
+                Inky.leaveGhostHouse();
+            }
+            else
+            {
+                if (!Clyde.isOutside)
+                {
+                    Clyde.leaveGhostHouse();
+                }
+            }
+        }
+    }
+
+    public void updateDotCounter()
+    {
+        // If the Global Counter is active, use it instead
+        if (bGlobalCounter)
+        {
+            globalDotCount++;
+
+            // Release Pinky from the Ghost House.
+            if (globalDotCount == 7)
+            {
+                if (!Pinky.isOutside)
+                {
+                    Pinky.leaveGhostHouse();
+                }
             }
 
-            if (PPtimeLeft <= 0)
+            if (globalDotCount == 17)
             {
-                endPowerPellet();
+                if (!Inky.isOutside)
+                {
+                    Inky.leaveGhostHouse();
+                }
+            }
 
+            if (globalDotCount == 32)
+            {
+                // If Clyde is inside the house, release him AND set the global counter to false.
+                if (!Clyde.isOutside)
+                {
+                    Clyde.leaveGhostHouse();
+                    bGlobalCounter = false;
+                }
+            }
+        }
+        else
+        {
+            if (!Pinky.isOutside)
+            {
+                Pinky.IncreaseDotCount();
+            }
+            else
+            {
+                if (!Inky.isOutside)
+                {
+                    Inky.IncreaseDotCount();
+                }
+                else
+                {
+                    if (!Clyde.isOutside)
+                    {
+                        Clyde.IncreaseDotCount();
+                    }
+                }
             }
         }
     }
 
     void updateModeTimer()
     {
+        if (bPowerPellet)
+        {
+            return;
+        }
+
         modeTimer += Time.deltaTime;
-        print("TIMER: "+modeTimer);
+        print("TIMER: " + modeTimer);
+
         switch (modeCount)
         {
             case(0):
@@ -219,6 +329,13 @@ public class GameController : MonoBehaviour
         }
     }
 
+    // If Pacman dies, reset the ghosts back to the original position and set game flags
+    public void PacmanDeath()
+    {
+        bGlobalCounter = true;
+        globalDotCount = 0;
+    }
+
     public void changeGhostModes(GhostAI.Modes newMode)
     {
         Blinky.setGlobalMode(newMode);
@@ -231,15 +348,16 @@ public class GameController : MonoBehaviour
     {
         // Set bPowerPellet to true so Update can countdown the time left
         bPowerPellet = true;
-        PPtimeLeft = PowerPellet;
+        PPtimeLeft = PowerPelletTime;
         setGhostsVuln(true);
+        setGhostsVulnEnd(false, false);
     }
 
     public void endPowerPellet()
     {
         // Set bPowerPellet to false so Update stops counting the time left
         bPowerPellet = false;
-        setGhostsVulnEnd(false);
+        setGhostsVulnEnd(false, true);
     }
 
     // Sets all ghosts vulnerability
@@ -252,12 +370,12 @@ public class GameController : MonoBehaviour
     }
 
     // Sets all ghosts vulnerabilityEnding
-    public void setGhostsVulnEnd(bool vulnEnd)
+    public void setGhostsVulnEnd(bool vulnEnd, bool changeMode)
     {
-        Blinky.setVulnerabilityEnd(vulnEnd);
-        Clyde.setVulnerabilityEnd(vulnEnd);
-        Inky.setVulnerabilityEnd(vulnEnd);
-        Pinky.setVulnerabilityEnd(vulnEnd);
+        Blinky.setVulnerabilityEnd(vulnEnd, changeMode);
+        Clyde.setVulnerabilityEnd(vulnEnd, changeMode);
+        Inky.setVulnerabilityEnd(vulnEnd, changeMode);
+        Pinky.setVulnerabilityEnd(vulnEnd, changeMode);
     }
 
     public void returnGhostsToDefault()
