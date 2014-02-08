@@ -94,7 +94,7 @@ MonoBehaviour:
   isOutside: 0
   dotCount: 0
   dotLimit: 30
-  moveSpeed: 10
+  moveSpeed: 12
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

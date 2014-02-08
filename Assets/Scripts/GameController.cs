@@ -139,6 +139,7 @@ public class GameController : MonoBehaviour
 
     public void updateDotCounter()
     {
+        houseTimer = 0f;
         // If the Global Counter is active, use it instead
         if (bGlobalCounter)
         {

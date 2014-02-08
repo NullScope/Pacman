@@ -4,9 +4,14 @@ using System.Collections;
 
 public class Pacman : MonoBehaviour {
 
+    public enum Directions { Up, Left, Down, Right }
+
     #region Variables
     public GameController gameController;
     private Animator anim;
+
+    public Directions currentDirection;
+    public Directions startDirection;
 
     [HideInInspector]
     public Vector2 tile;
@@ -31,6 +36,22 @@ public class Pacman : MonoBehaviour {
         {
             GameObject Camera = GameObject.Find("Main Camera");
             gameController = Camera.GetComponent<GameController>();
+        }
+
+        switch (startDirection)
+        {
+            case(Directions.Up):
+                input.y = -1;
+                break;
+            case (Directions.Left):
+                input.x = -1;
+                break;
+            case (Directions.Down):
+                input.y = 1;
+                break;
+            case (Directions.Right):
+                input.x = 1;
+                break;
         }
 	}
 
@@ -105,6 +126,8 @@ public class Pacman : MonoBehaviour {
             newZ = input.y * -90;
         }
 
+        currentDirection = VectorToDirection(startPosition, endPosition);
+
         while (t < 1f)
         {
             if (firstMove)
@@ -177,6 +200,37 @@ public class Pacman : MonoBehaviour {
         //tileX = Mathf.FloorToInt(Vector2.Lerp(startPosition, endPosition, t).x - 0.25f);
         //tileY = Mathf.FloorToInt(-1 * (Vector2.Lerp(startPosition, endPosition, t).y - 0.25f));
         tile = new Vector2((int)transform.position.x, (int)Math.Abs(transform.position.y));
+    }
+
+    public Directions VectorToDirection(Vector2 startPoint, Vector2 endPoint)
+    {
+        Vector2 direction = startPoint - endPoint;
+
+        // If Direction is Left.
+        if (direction.x == 1f)
+        {
+            return Directions.Left;
+        }
+
+        // If Direction is Right.
+        if (direction.x == -1f)
+        {
+            return Directions.Right;
+        }
+
+        // If Direction is Down.
+        if (direction.y == 1f)
+        {
+            return Directions.Down;
+        }
+
+        // If Direction is Up
+        if (direction.y == -1f)
+        {
+            return Directions.Up;
+        }
+
+        return Directions.Up;
     }
 
 }

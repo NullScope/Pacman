@@ -13,6 +13,8 @@ public class GhostAI : MonoBehaviour {
     #endregion
 
     #region Variables
+    public Pacman player;
+
     public Color DebugPathColor;
     public bool DebugPath;
 
@@ -28,7 +30,7 @@ public class GhostAI : MonoBehaviour {
     public Directions startDirection;
 
     protected Vector2 targetTile;
-    protected Vector2 tile;
+    public Vector2 tile;
     public Vector2 scatterTile;
     public Vector2 respawnTile;
     public Vector2 houseTile;
@@ -696,6 +698,7 @@ public class GhostAI : MonoBehaviour {
         {
             return;
         }
+
         var debugTile = new Vector2();
 
         switch (currentMode)
@@ -703,21 +706,22 @@ public class GhostAI : MonoBehaviour {
             case(Modes.Chase):
                 debugTile = targetTile;
                 break;
-            case(Modes.Scatter):
-                debugTile = scatterTile;
-                break;
             case(Modes.Frightened):
                 break;
             case(Modes.Respawning):
                 debugTile = respawnTile;
                 break;
+            default:
+                debugTile = scatterTile;
+                break;
         }
         
         // Current Center Tile.
-        Debug.DrawLine(new Vector3(tile.x, -1 * tile.y), new Vector3(tile.x + 1, -1 * tile.y), new Color(130,0,255,255), 0.0f, false);
+        Debug.DrawLine(new Vector3(tile.x, -1 * tile.y), new Vector3(tile.x + 1, -1 * tile.y), new Color(130, 0, 255, 255), 0.0f, false);
         Debug.DrawLine(new Vector3(tile.x, -1 * tile.y - 1), new Vector3(tile.x + 1, -1 * tile.y - 1), new Color(130, 0, 255, 255), 0.0f, false);
         Debug.DrawLine(new Vector3(tile.x, -1 * tile.y), new Vector3(tile.x, -1 * tile.y - 1), new Color(130, 0, 255, 255), 0.1f, false);
         Debug.DrawLine(new Vector3(tile.x + 1, -1 * tile.y), new Vector3(tile.x + 1, -1 * tile.y - 1), new Color(130, 0, 255, 255), 0.0f, false);
+        
         // Current Target Tile
         Debug.DrawLine(new Vector3(debugTile.x, debugTile.y), new Vector3(debugTile.x + 1, debugTile.y), DebugPathColor, 0.0f, false);
         Debug.DrawLine(new Vector3(debugTile.x, debugTile.y - 1), new Vector3(debugTile.x + 1, debugTile.y - 1), DebugPathColor, 0.0f, false);
