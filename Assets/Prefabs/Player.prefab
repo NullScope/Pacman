@@ -83,10 +83,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
-  tileX: 0
-  tileY: 0
-  firstMove: 1
-  moveSpeed: 11
+  currentDirection: 0
+  startDirection: 1
+  tile: {x: 0, y: 0}
+  maxSpeed: 10
+  defaultSpeedPercentages:
+  - 80
+  - 90
+  - 90
+  - 90
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 90
+  frightSpeedPercentages:
+  - 90
+  - 95
+  - 95
+  - 95
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
