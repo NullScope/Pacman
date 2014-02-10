@@ -47,9 +47,15 @@ public class GhostAI : MonoBehaviour {
     private bool isFirstMove;
     public bool isVulnerable;
     public bool isOutside;
+    public bool inTunnel;
     public int dotCount;
     public int dotLimit;
-    public float moveSpeed;
+
+    private float moveSpeed;
+    public float maxSpeed;
+    public float[] defaultSpeedPercentages;
+    public float[] tunnelSpeedPercentages;
+    public float[] frightSpeedPercentages;
     #endregion
 
     // Use this for initialization
@@ -83,14 +89,14 @@ public class GhostAI : MonoBehaviour {
 	// Update is called once per frame
 	public void Update ()
     {
-        updateVulnParameter();
-        updateTile();
-        updatePosition();
-        updateDotCount();
+        UpdateVulnParameter();
+        UpdateTile();
+        UpdatePosition();
+        UpdateDotCount();
         DebugPathFind();
 	}
 
-    public void updatePosition() 
+    public void UpdatePosition() 
     {
         if (isMoving)
         {
@@ -109,7 +115,7 @@ public class GhostAI : MonoBehaviour {
         }
     }
 
-    public void updateDotCount()
+    public void UpdateDotCount()
     {
         if (gameController.bGlobalCounter)
         {
@@ -145,67 +151,70 @@ public class GhostAI : MonoBehaviour {
         float t = 0;
         Vector2 endPosition = new Vector2();
         Vector2 startPosition;
+
         isMoving = true;
         startPosition = transform.position;
+
         setDirection((int)currentDirection);
+
         // Set the new square to move to.
         switch (currentDirection)
         {
             case(Directions.Up):
                 if (isFirstMove)
-                {
                     endPosition = new Vector2(startPosition.x, startPosition.y + 0.5f);
-                }
                 else
-                {
                     endPosition = new Vector2(startPosition.x, startPosition.y + 1f);
-                }
                 break;
+
             case(Directions.Left):
                 if (isFirstMove)
-                {
                     endPosition = new Vector2(startPosition.x - 0.5f, startPosition.y);
-                }
                 else
-                {
                     endPosition = new Vector2(startPosition.x - 1f, startPosition.y);
-                }
                 break;
+
             case(Directions.Down):
                 if (isFirstMove)
-                {
                     endPosition = new Vector2(startPosition.x, startPosition.y - 0.5f);
-                }
                 else
-                {
                     endPosition = new Vector2(startPosition.x, startPosition.y - 1f);
-                }
                 break;
+
             case(Directions.Right):
                 if (isFirstMove)
-                {
                     endPosition = new Vector2(startPosition.x + 0.5f, startPosition.y);
-                }
                 else
-                {
                     endPosition = new Vector2(startPosition.x + 1f, startPosition.y);
-                }
                 break;
         }
 
-        if (isFirstMove)
+        // If the tile the ghost wants to go to is a Tunnel tile, set inTunnel flag
+        if (gameController.GetPacTile((int)endPosition.x, (int)endPosition.y * -1).cost == 3)
         {
-            isFirstMove = false;
+            inTunnel = true;
         }
+        else
+        {
+            inTunnel = false;
+        }
+
+        UpdateMoveSpeed();
 
         while (t < 1f)
         {
-            t += moveSpeed * Time.deltaTime;
+            t += moveSpeed * Time.smoothDeltaTime;
 
             transform.position = Vector2.Lerp(startPosition, endPosition, t);
-            yield return 0;
+
+            if (t >= 1f)
+                break;
+            else
+                yield return 1;
         }
+
         isMoving = false;
+        isFirstMove = false;
         yield break;
     }
 
@@ -317,12 +326,18 @@ public class GhostAI : MonoBehaviour {
             yield break;
         }
 
+        UpdateMoveSpeed();
+
         while (t < 1f)
         {
-            t += moveSpeed * Time.deltaTime;
+            t += moveSpeed * Time.smoothDeltaTime;
 
             transform.position = Vector2.Lerp(startPosition, endPosition, t);
-            yield return 0;
+
+            if (t >= 1f)
+                break;
+            else
+                yield return 1;
         }
 
         isMoving = false;
@@ -550,7 +565,7 @@ public class GhostAI : MonoBehaviour {
         return newDirection;
     }
 
-    private void updateTile()
+    private void UpdateTile()
     {
         tile = new Vector2((int)transform.position.x, (int)Math.Abs(transform.position.y));
     }
@@ -574,12 +589,38 @@ public class GhostAI : MonoBehaviour {
         bWorking = true;
     }
 
-    void updateVulnParameter()
+    void UpdateVulnParameter()
     {
         AnimatorStateInfo nextState = anim.GetNextAnimatorStateInfo(0);
         if (!nextState.Equals(null) && nextState.IsName("Base Layer.Vulnerable"))
         {
             setVulnerability(false);
+        }
+    }
+
+    void UpdateMoveSpeed()
+    {
+        if (!isOutside)
+        {
+            moveSpeed = maxSpeed * (defaultSpeedPercentages[gameController.level] / 100);
+        }
+        else
+        {
+            if (isVulnerable)
+            {
+                moveSpeed = maxSpeed * (frightSpeedPercentages[gameController.level] / 100);
+            }
+            else
+            {
+                if (inTunnel)
+                {
+                    moveSpeed = maxSpeed * (tunnelSpeedPercentages[gameController.level] / 100);
+                }
+                else
+                {
+                    moveSpeed = maxSpeed * (defaultSpeedPercentages[gameController.level] / 100);
+                }
+            }
         }
     }
 

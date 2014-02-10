@@ -82,19 +82,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8ac2e15c466aa48bb001992bee13ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   DebugPathColor: {r: .996078432, g: .796078444, b: .200000003, a: 1}
   DebugPath: 1
   currentMode: 0
   startMode: 6
   startDirection: 1
+  tile: {x: 0, y: 0}
   scatterTile: {x: 0, y: -35}
   respawnTile: {x: 13, y: -14}
   houseTile: {x: 16, y: -17.5}
   isVulnerable: 0
   isOutside: 0
+  inTunnel: 0
   dotCount: 0
   dotLimit: 60
-  moveSpeed: 12
+  maxSpeed: 10
+  defaultSpeedPercentages:
+  - 75
+  - 85
+  - 85
+  - 85
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  - 95
+  tunnelSpeedPercentages:
+  - 40
+  - 45
+  - 45
+  - 45
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  frightSpeedPercentages:
+  - 50
+  - 55
+  - 55
+  - 55
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
+  - 60
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

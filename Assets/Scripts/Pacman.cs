@@ -16,10 +16,13 @@ public class Pacman : MonoBehaviour {
     [HideInInspector]
     public Vector2 tile;
 
-    private bool isAlive = true;
-    public bool firstMove;
+    private bool isAlive;
+    private bool isFirstMove;
 
-    public float moveSpeed;
+    private float moveSpeed;
+    public float maxSpeed;
+    public float[] defaultSpeedPercentages;
+    public float[] frightSpeedPercentages;
 
     private bool isMoving = false;
     private Vector2 input;
@@ -27,6 +30,8 @@ public class Pacman : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        isAlive = true;
+        isFirstMove = true;
 
         anim = GetComponent<Animator>();
 
@@ -58,6 +63,8 @@ public class Pacman : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        UpdateMoveSpeed();
+
         if (isAlive == true)
         {
             updateAxis();
@@ -90,7 +97,7 @@ public class Pacman : MonoBehaviour {
     {
         transform.position = GameObject.Find("Pacman Respawn").transform.position;
         isAlive = true;
-        firstMove = true;
+        isFirstMove = true;
         anim.SetBool("Dead", false);
     }
 
@@ -109,7 +116,7 @@ public class Pacman : MonoBehaviour {
         
         // If its the first time Pacman moving from the respawn point,
         // Pacman needs to move 0.5f instead of 1.0f because of the respawn location
-        if (firstMove){
+        if (isFirstMove){
             endPosition = new Vector2(startPosition.x + System.Math.Sign(input.x) - 0.5f * input.x,
                                       startPosition.y + System.Math.Sign(input.y));
         }else{
@@ -130,7 +137,7 @@ public class Pacman : MonoBehaviour {
 
         while (t < 1f)
         {
-            if (firstMove)
+            if (isFirstMove)
             {
                 t += (moveSpeed * 2) * Time.deltaTime;
             }else{
@@ -147,11 +154,14 @@ public class Pacman : MonoBehaviour {
             transform.Rotate(new Vector3(0, 0, newZ), Space.World);
 
             anim.SetBool("Running", true);
-            yield return 0;
+            
+            if (t >= 1f)
+                break;
+            else
+                yield return 1;
         }
-        t = 0;
         isMoving = false;
-        firstMove = false;
+        isFirstMove = false;
         yield break;
     }
 
@@ -162,31 +172,31 @@ public class Pacman : MonoBehaviour {
         if (!isMoving)
         {
             if (Input.GetAxisRaw("Horizontal") != 0
-                && gameController.getTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 0
-                && gameController.getTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 2)
+                && gameController.GetTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 0
+                && gameController.GetTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 2)
             {
                 input.x = Input.GetAxisRaw("Horizontal");
                 input.y = 0;
             }
 
             if (Input.GetAxisRaw("Vertical") != 0
-                && gameController.getTile(tile.x, tile.y - Input.GetAxisRaw("Vertical")) != 0
-                && gameController.getTile(tile.x, tile.y - Input.GetAxisRaw("Vertical")) != 2)
+                && gameController.GetTile(tile.x, tile.y - Input.GetAxisRaw("Vertical")) != 0
+                && gameController.GetTile(tile.x, tile.y - Input.GetAxisRaw("Vertical")) != 2)
             {
                 input.x = 0;
                 input.y = Input.GetAxisRaw("Vertical");
             }
 
             if (input.x != 0
-                && (gameController.getTile(tile.x + input.x, tile.y) == 0
-                || gameController.getTile(tile.x + input.x, tile.y) == 2))
+                && (gameController.GetTile(tile.x + input.x, tile.y) == 0
+                || gameController.GetTile(tile.x + input.x, tile.y) == 2))
             {
                 input.x = 0;
             }
 
             if (input.y != 0
-                && (gameController.getTile(tile.x, tile.y - input.y) == 0
-                || gameController.getTile(tile.x, tile.y - input.y) == 2))
+                && (gameController.GetTile(tile.x, tile.y - input.y) == 0
+                || gameController.GetTile(tile.x, tile.y - input.y) == 2))
             {
                 input.y = 0;
             }
@@ -200,6 +210,14 @@ public class Pacman : MonoBehaviour {
         //tileX = Mathf.FloorToInt(Vector2.Lerp(startPosition, endPosition, t).x - 0.25f);
         //tileY = Mathf.FloorToInt(-1 * (Vector2.Lerp(startPosition, endPosition, t).y - 0.25f));
         tile = new Vector2((int)transform.position.x, (int)Math.Abs(transform.position.y));
+    }
+
+    void UpdateMoveSpeed()
+    {
+        if (!gameController.activePowerPellet)
+            moveSpeed = maxSpeed * (defaultSpeedPercentages[gameController.level] / 100);
+        else
+            moveSpeed = maxSpeed * (frightSpeedPercentages[gameController.level] / 100);
     }
 
     public Directions VectorToDirection(Vector2 startPoint, Vector2 endPoint)

@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
 
     #region Variables
     private int score;
-    private int level;
+    public int level;
     public int lifes;
     private int globalDotCount;
     private int modeCount;
@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
     private GhostAI.Modes currentMode;
     public float PowerPelletTime;
     private float PPtimeLeft;
-    private bool bPowerPellet;
+    public bool activePowerPellet;
     public bool bGlobalCounter;
     #endregion
 
@@ -63,8 +63,6 @@ public class GameController : MonoBehaviour
 	void Start () 
     {
         currentMode = startMode;
-        //Increase level
-        level++;
 	}
 
     // Update is called once per frame
@@ -77,7 +75,7 @@ public class GameController : MonoBehaviour
 
     void updatePowerPellet()
     {
-        if (!bPowerPellet)
+        if (!activePowerPellet)
         {
             return;
         }
@@ -197,7 +195,7 @@ public class GameController : MonoBehaviour
 
     void updateModeTimer()
     {
-        if (bPowerPellet)
+        if (activePowerPellet)
         {
             return;
         }
@@ -348,7 +346,7 @@ public class GameController : MonoBehaviour
     public void startPowerPellet()
     {
         // Set bPowerPellet to true so Update can countdown the time left
-        bPowerPellet = true;
+        activePowerPellet = true;
         PPtimeLeft = PowerPelletTime;
         setGhostsVuln(true);
         setGhostsVulnEnd(false, false);
@@ -357,7 +355,7 @@ public class GameController : MonoBehaviour
     public void endPowerPellet()
     {
         // Set bPowerPellet to false so Update stops counting the time left
-        bPowerPellet = false;
+        activePowerPellet = false;
         setGhostsVulnEnd(false, true);
     }
 
@@ -407,7 +405,7 @@ public class GameController : MonoBehaviour
         return PacTiles[(int)position.x, (int)position.y];
     }
 
-    public byte getTile(float x, float y)
+    public byte GetTile(float x, float y)
     {
         return tiles[(int)x, (int)y];
     }

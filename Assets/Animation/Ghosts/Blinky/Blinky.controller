@@ -297,7 +297,7 @@ Transition:
     m_ConditionEvent: Direction
     m_EventTreshold: 2
     m_ExitTime: 1
-  m_Atomic: 0
+  m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
 --- !u!1101 &110151622
