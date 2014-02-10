@@ -37,12 +37,6 @@ public class GhostAI : MonoBehaviour {
 
     protected GameController gameController;
 
-    /**DEPRECATED**/
-    protected PathFind pathFind = new PathFind();
-    protected BackgroundWorker pathFinder = new BackgroundWorker();
-    protected List<PathFind.Node> path = new List<PathFind.Node>();
-
-    protected bool bWorking;
     protected bool isMoving;
     private bool isFirstMove;
     public bool isVulnerable;
@@ -71,11 +65,11 @@ public class GhostAI : MonoBehaviour {
             GameObject Camera = GameObject.Find("Main Camera");
             gameController = Camera.GetComponent<GameController>();
         }
-        InitializePathFinder();
+        //InitializePathFinder();
     }
 
     /**DEPRECATED**/
-    private void InitializePathFinder()
+    /*private void InitializePathFinder()
     {
         pathFind.gameController = gameController;
         pathFinder.WorkerSupportsCancellation = true;
@@ -84,7 +78,7 @@ public class GhostAI : MonoBehaviour {
             new System.ComponentModel.DoWorkEventHandler(pathFind.DoWork);
         pathFinder.RunWorkerCompleted +=
             new System.ComponentModel.RunWorkerCompletedEventHandler(pathFind.WorkerCompleted);
-    }
+    }*/
 
 	// Update is called once per frame
 	public void Update ()
@@ -203,7 +197,10 @@ public class GhostAI : MonoBehaviour {
 
         while (t < 1f)
         {
-            t += moveSpeed * Time.smoothDeltaTime;
+            if (isFirstMove)
+                t += (moveSpeed * 2) * Time.smoothDeltaTime;
+            else
+                t += moveSpeed * Time.smoothDeltaTime;
 
             transform.position = Vector2.Lerp(startPosition, endPosition, t);
 
@@ -570,25 +567,6 @@ public class GhostAI : MonoBehaviour {
         tile = new Vector2((int)transform.position.x, (int)Math.Abs(transform.position.y));
     }
 
-    protected void RequestPathFind(Vector2 startPoint, Vector2 endPoint, GhostAI caller, List<Directions> bannedDirections, bool IsInsideHouse)
-    {
-        //pathFind.findPath(startPoint, endPoint, gameController.Tiles, bannedDirections, IsInsideHouse);
-        List<object> arguments = new List<object>();
-        arguments.Add(startPoint);
-        arguments.Add(endPoint);
-        arguments.Add(caller);
-        arguments.Add(gameController.Tiles);
-        arguments.Add(bannedDirections);
-        arguments.Add(IsInsideHouse);
-        pathFinder.RunWorkerAsync(arguments);
-    }
-
-    public void PathFinderCompleted(List<PathFind.Node> closedNodes)
-    {
-        path = closedNodes;
-        bWorking = true;
-    }
-
     void UpdateVulnParameter()
     {
         AnimatorStateInfo nextState = anim.GetNextAnimatorStateInfo(0);
@@ -792,6 +770,6 @@ public class GhostAI : MonoBehaviour {
 
     void OnApplicationQuit()
     {
-        pathFinder.CancelAsync();
+        //pathFinder.CancelAsync();
     }
 }

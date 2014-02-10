@@ -63,8 +63,6 @@ public class Pacman : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        UpdateMoveSpeed();
-
         if (isAlive == true)
         {
             updateAxis();
@@ -135,14 +133,15 @@ public class Pacman : MonoBehaviour {
 
         currentDirection = VectorToDirection(startPosition, endPosition);
 
+        UpdateMoveSpeed();
+
         while (t < 1f)
         {
             if (isFirstMove)
-            {
                 t += (moveSpeed * 2) * Time.deltaTime;
-            }else{
+            else
                 t += moveSpeed * Time.deltaTime;
-            }
+            
             
             transform.position = Vector2.Lerp(startPosition, endPosition, t);
 
@@ -160,6 +159,7 @@ public class Pacman : MonoBehaviour {
             else
                 yield return 1;
         }
+
         isMoving = false;
         isFirstMove = false;
         yield break;
@@ -192,13 +192,38 @@ public class Pacman : MonoBehaviour {
                 || gameController.GetTile(tile.x + input.x, tile.y) == 2))
             {
                 input.x = 0;
+                anim.speed = 0;
             }
+            else
+            {
+                if (gameController.activePowerPellet)
+                {
+                    anim.speed = frightSpeedPercentages[gameController.level] / 100;
+                }
+                else
+                {
+                    anim.speed = defaultSpeedPercentages[gameController.level] / 100;
+                }
+            }
+                
 
             if (input.y != 0
                 && (gameController.GetTile(tile.x, tile.y - input.y) == 0
                 || gameController.GetTile(tile.x, tile.y - input.y) == 2))
             {
                 input.y = 0;
+                anim.speed = 0;
+            }
+            else
+            {
+                if (gameController.activePowerPellet)
+                {
+                    anim.speed = frightSpeedPercentages[gameController.level] / 100;
+                }
+                else
+                {
+                    anim.speed = defaultSpeedPercentages[gameController.level] / 100;
+                }
             }
         }
     }
