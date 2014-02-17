@@ -90,12 +90,12 @@ MonoBehaviour:
   startDirection: 1
   tile: {x: 0, y: 0}
   scatterTile: {x: 25, y: 0}
-  respawnTile: {x: 13, y: 14}
+  respawnTile: {x: 13, y: -14}
   houseTile: {x: 14, y: -17.5}
+  gameController: {fileID: 11400000, guid: 04113fc47fb4f8444a29383f42f8fb08, type: 2}
   isVulnerable: 0
   isOutside: 1
   inTunnel: 0
-  dotCount: 0
   dotLimit: 0
   maxSpeed: 10
   defaultSpeedPercentages:
@@ -182,7 +182,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: -3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortingLayerID: 676574203
   m_Sprite: {fileID: 21300084, guid: a8abf0abf37cb774a89c74cd433c95cf, type: 3}

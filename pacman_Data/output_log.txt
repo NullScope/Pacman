@@ -1,4 +1,4 @@
-Initialize engine version: 4.3.1f1 (cebd4d9b5122)
+Initialize engine version: 4.3.3f1 (c8ca9b6b9936)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.2049]
@@ -11,32 +11,25 @@ Platform assembly: C:\Users\Miguel\Documents\Pacman\pacman_Data\Managed\UnityEng
 Loading C:\Users\Miguel\Documents\Pacman\pacman_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\Miguel\Documents\Pacman\pacman_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\Miguel\Documents\Pacman\pacman_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.070 seconds
+- Completed reload, in  0.110 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
-Platform assembly: C:\Users\Miguel\Documents\Pacman\pacman_Data\Managed\System.dll (this message is harmless)
 HandleD3DDeviceLost
   HandleD3DDeviceLost: still lost
-Skipped rendering frame because GfxDevice is in invalid state (device lost)
+Skipped frame because GfxDevice is in invalid state (device lost)
  
-(Filename: C:/BuildAgent/work/d3d49558e4d408f4/Runtime/Misc/Player.cpp Line: 1539)
+(Filename:  Line: 1650)
 
 HandleD3DDeviceLost
   HandleD3DDeviceLost: still lost
-Skipped rendering frame because GfxDevice is in invalid state (device lost)
+Skipped frame because GfxDevice is in invalid state (device lost)
  
-(Filename: C:/BuildAgent/work/d3d49558e4d408f4/Runtime/Misc/Player.cpp Line: 1539)
+(Filename:  Line: 1650)
 
 HandleD3DDeviceLost
   HandleD3DDeviceLost: still lost
-Skipped rendering frame because GfxDevice is in invalid state (device lost)
+Skipped frame because GfxDevice is in invalid state (device lost)
  
-(Filename: C:/BuildAgent/work/d3d49558e4d408f4/Runtime/Misc/Player.cpp Line: 1539)
-
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped rendering frame because GfxDevice is in invalid state (device lost)
- 
-(Filename: C:/BuildAgent/work/d3d49558e4d408f4/Runtime/Misc/Player.cpp Line: 1539)
+(Filename:  Line: 1650)
 

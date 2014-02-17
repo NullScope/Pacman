@@ -9,6 +9,11 @@ public class InkyAI : GhostAI {
 	// Use this for initialization
 	new void Start () {
         base.Start();
+
+        if (blinky == null)
+        {
+            blinky = gameController.blinky;
+        }
 	}
 
 	// Update is called once per frame

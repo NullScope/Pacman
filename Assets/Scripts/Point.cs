@@ -4,6 +4,8 @@ using System.Collections;
 public class Point : PacTile {
     public Sprite backgroundSprite;
     public int points;
+    public int framePauses;
+    public bool isConsumed;
 
 	// Use this for initialization
 	new public void Start () {
@@ -16,19 +18,21 @@ public class Point : PacTile {
         
 	}
 
-    public void OnTriggerEnter2D(Collider2D coll)
+    /*public void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Player")
         {
             //if collision was with pacman, increase score
             consume();
         }
-    }
+    }*/
 
-    public void consume()
+    public virtual void consume()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = backgroundSprite;
         gameController.Score += points;
-        gameController.updateDotCounter();
+        gameController.UpdateDotCount();
+        gameController.player.framePauses = framePauses;
+        isConsumed = true;
     }
 }

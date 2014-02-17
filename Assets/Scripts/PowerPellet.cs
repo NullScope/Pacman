@@ -13,7 +13,7 @@ public class PowerPellet : Point {
         base.Update();
 	}
 
-    new void OnTriggerEnter2D(Collider2D coll)
+    /*new void OnTriggerEnter2D(Collider2D coll)
     {
         base.OnTriggerEnter2D(coll);
 
@@ -22,5 +22,11 @@ public class PowerPellet : Point {
             //if collision was with pacman, make the ghosts vulnerable
             gameController.startPowerPellet();
         }
+    }*/
+
+    public override void consume()
+    {
+        base.consume();
+        gameController.startPowerPellet();
     }
 }

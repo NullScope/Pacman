@@ -35,14 +35,14 @@ public class GhostAI : MonoBehaviour {
     public Vector2 respawnTile;
     public Vector2 houseTile;
 
-    protected GameController gameController;
+    public GameController gameController;
 
     protected bool isMoving;
     private bool isFirstMove;
     public bool isVulnerable;
     public bool isOutside;
     public bool inTunnel;
-    public int dotCount;
+    protected int dotCount;
     public int dotLimit;
 
     private float moveSpeed;
@@ -59,12 +59,21 @@ public class GhostAI : MonoBehaviour {
         currentMode = startMode;
         nextDirection = startDirection;
         anim = GetComponent<Animator>();
-        
+
+        UpdateTile();
+
         if (gameController == null)
         {
             GameObject Camera = GameObject.Find("Main Camera");
             gameController = Camera.GetComponent<GameController>();
         }
+
+        if (player == null)
+        {
+            player = gameController.player;
+        }
+
+
         //InitializePathFinder();
     }
 
@@ -83,10 +92,16 @@ public class GhostAI : MonoBehaviour {
 	// Update is called once per frame
 	public void Update ()
     {
+        if (gameController.isPaused)
+        {
+            return;
+        }
+
         UpdateVulnParameter();
         UpdateTile();
         UpdatePosition();
         UpdateDotCount();
+        UpdateCollision();
         DebugPathFind();
 	}
 
@@ -116,9 +131,31 @@ public class GhostAI : MonoBehaviour {
             return;
         }
 
-        if (dotCount >= dotLimit && !isOutside)
+        if (dotCount >= dotLimit && !isOutside && currentMode == Modes.Idle)
         {
             leaveGhostHouse();
+        }
+    }
+
+    public void UpdateCollision()
+    {
+        // Check if tile is the same tile as pacman.
+        if (tile == player.tile)
+        {
+            // Check if the ghost is in fright mode.
+            if (currentMode == Modes.Frightened)
+            {
+                StartCoroutine(gameController.Pause(1f));
+                Death();
+            }
+            else
+            {
+                if (currentMode != Modes.Respawning && currentMode != Modes.Entering && currentMode != Modes.Leaving)
+                {
+                    StartCoroutine(gameController.Pause(1f));
+                    player.Death();
+                }
+            } 
         }
     }
 
@@ -135,7 +172,6 @@ public class GhostAI : MonoBehaviour {
     {
         StopAllCoroutines();
         isMoving = false;
-        transform.position = respawnTile;
         setMode(Modes.Entering);
         isOutside = false;
     }
@@ -210,6 +246,11 @@ public class GhostAI : MonoBehaviour {
                 yield return 1;
         }
 
+        if (currentMode == Modes.Respawning && tile == new Vector2(respawnTile.x, Math.Abs(respawnTile.y)))
+        {
+            enterGhostHouse();
+        }
+
         isMoving = false;
         isFirstMove = false;
         yield break;
@@ -218,11 +259,12 @@ public class GhostAI : MonoBehaviour {
     public IEnumerator HouseMove(Modes mode)
     {
         float t = 0;
-        Vector2 endPosition = new Vector2();
-        Vector2 startPosition;
+        var endPosition = new Vector2();
+        var startPosition = new Vector2();
         isMoving = true;
         startPosition = transform.position;
 
+        setDirection((int)currentDirection);
 
         switch (mode)
         {
@@ -252,7 +294,7 @@ public class GhostAI : MonoBehaviour {
                 break;
 
             case(Modes.Leaving):
-                setDirection((int)currentDirection);
+                
                 // If it is on the Left Side.
                 if (startPosition.x - (respawnTile.x + 1) < 0)
                 {
@@ -275,6 +317,7 @@ public class GhostAI : MonoBehaviour {
                         if (endPosition.y == respawnTile.y - 0.5f)
                         {
                             setMode(currentGlobalMode);
+                            nextDirection = startDirection;
                         }
                     }
                 }
@@ -282,37 +325,40 @@ public class GhostAI : MonoBehaviour {
                 break;
 
             case(Modes.Entering):
-                setDirection((int)currentDirection);
 
-                // If it needs to align Y axis to the House Tile.
-                if (startPosition.y - houseTile.y > 0)
+                if (new Vector2(tile.x, -1 * tile.y) == respawnTile)
                 {
-                    endPosition = new Vector2(startPosition.x, startPosition.y - 1f);
+                    endPosition = new Vector2(startPosition.x + 0.5f, startPosition.y);
                 }
                 else
                 {
-                    // If it already aligned with the Y axis
-                    if (startPosition.y - houseTile.y == 0)
+                    if (startPosition.y != houseTile.y)
                     {
-                        // If it needs to go the Left side.
-                        if (startPosition.x - houseTile.x > 0)
+                        endPosition = new Vector2(startPosition.x, startPosition.y - 1f);
+                    }
+                    else
+                    {
+                        // If it is on the Left Side.
+                        if (startPosition.x - houseTile.x < 0)
                         {
-                            endPosition = new Vector2(startPosition.x - 1f, startPosition.y);
+                            endPosition = new Vector2(startPosition.x + 1f, startPosition.y);
                         }
                         else
                         {
-                            // If it needs to go the Left side.
-                            if (startPosition.x - houseTile.x < 0)
+                            // If it is on the Right Side
+                            if (startPosition.x - houseTile.x > 0)
                             {
-                                endPosition = new Vector2(startPosition.x + 1f, startPosition.y);
+                                endPosition = new Vector2(startPosition.x - 1f, startPosition.y);
                             }
                             else
                             {
-                                setMode(Modes.Idle);
+                                currentMode = Modes.Idle;
+                                Respawn();
                             }
                         }
                     }
                 }
+                
                 currentDirection = VectorToDirection(startPosition, endPosition);
                 break;
         }
@@ -447,7 +493,6 @@ public class GhostAI : MonoBehaviour {
                 }
                 break;
         }
-
         // Check if the endPosition Tile is an intersection.
         if (gameController.GetPacTile((int)nextPosition.x, (int)Math.Abs(nextPosition.y)).allowedDirections.Count > 0)
         {
@@ -512,11 +557,12 @@ public class GhostAI : MonoBehaviour {
                         }
                         break;
                 }
-                if (DebugPath)
+
+                /*if (DebugPath)
                 {
                     print(lowestEuclidean + " | " + tempPosition + " | " + allowedDirections[i] + " | " + Euclidean(tempPosition, targetedTile));
                     print("Direction Chosen: " + nextDirection + " INDEX: " + i + " COUNT: " + (allowedDirections.Count - 1));
-                }
+                }*/
             }
         }
         else
@@ -578,46 +624,53 @@ public class GhostAI : MonoBehaviour {
 
     void UpdateMoveSpeed()
     {
-        if (!isOutside)
+        // The last index will be used after the level surpasses the array length. 
+
+        if (isVulnerable)
         {
-            moveSpeed = maxSpeed * (defaultSpeedPercentages[gameController.level] / 100);
+            if (gameController.level > frightSpeedPercentages.Length - 1)
+                moveSpeed = maxSpeed * (frightSpeedPercentages[frightSpeedPercentages.Length - 1] / 100);
+            else
+                moveSpeed = maxSpeed * (frightSpeedPercentages[gameController.level] / 100);
         }
         else
         {
-            if (isVulnerable)
+            if (inTunnel)
             {
-                moveSpeed = maxSpeed * (frightSpeedPercentages[gameController.level] / 100);
+                if (gameController.level > tunnelSpeedPercentages.Length - 1)
+                    moveSpeed = maxSpeed * (tunnelSpeedPercentages[tunnelSpeedPercentages.Length - 1] / 100);
+                else
+                    moveSpeed = maxSpeed * (tunnelSpeedPercentages[gameController.level] / 100);
             }
             else
             {
-                if (inTunnel)
-                {
-                    moveSpeed = maxSpeed * (tunnelSpeedPercentages[gameController.level] / 100);
-                }
+                if (gameController.level > defaultSpeedPercentages.Length - 1)
+                    moveSpeed = maxSpeed * (defaultSpeedPercentages[defaultSpeedPercentages.Length - 1] / 100);
                 else
-                {
                     moveSpeed = maxSpeed * (defaultSpeedPercentages[gameController.level] / 100);
-                }
             }
         }
     }
 
     public void Death()
     {
-        setRespawning(true);
-        gameObject.layer = 13;
+        anim.SetBool("Respawning", true);
+        setMode(Modes.Respawning);
+        isVulnerable = false;
     }
 
     public void Respawn()
     {
-        setRespawning(false);
-        gameObject.layer = 9;
+        anim.SetBool("Respawning", false);
+        isVulnerable = false;
+        isFirstMove = true;
+        isMoving = false;
     }
 
     public void setMode(Modes newMode)
     {
         // If currentMode is not Idle, Entering or Leaving, revert direction
-        if (currentMode != Modes.Idle && currentMode != Modes.Entering && currentMode != Modes.Leaving)
+        if ((currentMode != Modes.Idle && currentMode != Modes.Entering && currentMode != Modes.Leaving && currentMode != Modes.Respawning && currentMode != Modes.Frightened) || (currentMode != Modes.Frightened && newMode == Modes.Frightened))
         {
             switch (currentDirection)
             {
@@ -652,7 +705,7 @@ public class GhostAI : MonoBehaviour {
     public void setGlobalMode(Modes newMode)
     {
         // If currentMode is not Idle, Entering, Leaving or Respawning, set new mode
-        if (currentMode != Modes.Idle && currentMode != Modes.Entering && currentMode != Modes.Leaving)
+        if (currentMode != Modes.Idle && currentMode != Modes.Entering && currentMode != Modes.Leaving && currentMode != Modes.Respawning)
         {
             setMode(newMode);
         }
@@ -696,13 +749,6 @@ public class GhostAI : MonoBehaviour {
             isVulnerable = false;
             setMode(currentGlobalMode);
         }
-    }
-
-    // Sets Animator Respawning parameter and disable collision
-    public void setRespawning(bool respawn)
-    {
-        anim.SetBool("Respawning", respawn);
-        setMode(Modes.Respawning);
     }
 
     // Sets Animator to back to the default animation
@@ -766,10 +812,5 @@ public class GhostAI : MonoBehaviour {
         Debug.DrawLine(new Vector3(pathFind.lowestNode.x, pathFind.lowestNode.y * -1), new Vector3(pathFind.lowestNode.x, -1 * pathFind.lowestNode.y - 1), Color.blue, 0.1f, false);
         Debug.DrawLine(new Vector3(pathFind.lowestNode.x + 1, pathFind.lowestNode.y * -1), new Vector3(pathFind.lowestNode.x + 1, -1 * pathFind.lowestNode.y - 1), Color.blue, 0.1f, false);
         */
-    }
-
-    void OnApplicationQuit()
-    {
-        //pathFinder.CancelAsync();
     }
 }

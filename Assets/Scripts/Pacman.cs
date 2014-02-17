@@ -10,11 +10,13 @@ public class Pacman : MonoBehaviour {
     public GameController gameController;
     private Animator anim;
 
+    public int framePauses;
+
     public Directions currentDirection;
     public Directions startDirection;
 
-    [HideInInspector]
     public Vector2 tile;
+    public Vector2 startPosition;
 
     private bool isAlive;
     private bool isFirstMove;
@@ -35,7 +37,7 @@ public class Pacman : MonoBehaviour {
 
         anim = GetComponent<Animator>();
 
-        updatePosition();
+        UpdatePosition();
 
         if (gameController == null)
         {
@@ -63,6 +65,17 @@ public class Pacman : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+
+        if (gameController.isPaused)
+        {
+            anim.speed = 0;
+            return;
+        }
+        else
+        {
+            anim.speed = 1;
+        }
+
         if (isAlive == true)
         {
             updateAxis();
@@ -71,6 +84,9 @@ public class Pacman : MonoBehaviour {
                 StartCoroutine(move());
             }
         }
+
+        UpdatePosition();
+        UpdateDotCollision();
 
         // Always stop Running animation after Pacman moves a tile.
         if (input == Vector2.zero)
@@ -93,7 +109,7 @@ public class Pacman : MonoBehaviour {
     //Sets Pacman position to respawn
     void Respawn()
     {
-        transform.position = GameObject.Find("Pacman Respawn").transform.position;
+        transform.position = startPosition;
         isAlive = true;
         isFirstMove = true;
         anim.SetBool("Dead", false);
@@ -138,15 +154,18 @@ public class Pacman : MonoBehaviour {
         while (t < 1f)
         {
             if (isFirstMove)
-                t += (moveSpeed * 2) * Time.deltaTime;
+                t += (moveSpeed * 2) * Time.smoothDeltaTime;
             else
-                t += moveSpeed * Time.deltaTime;
-            
-            
-            transform.position = Vector2.Lerp(startPosition, endPosition, t);
+                t += moveSpeed * Time.smoothDeltaTime;
 
-            updatePosition();
-            updateAxis();
+
+            while (framePauses != 0)
+            {
+                framePauses--;
+                yield return 2;
+            }
+
+            transform.position = Vector2.Lerp(startPosition, endPosition, t);
 
             //Rotate Pacman to face the current direction
             transform.Rotate(new Vector3(0, 0, -transform.eulerAngles.z), Space.World);
@@ -192,18 +211,6 @@ public class Pacman : MonoBehaviour {
                 || gameController.GetTile(tile.x + input.x, tile.y) == 2))
             {
                 input.x = 0;
-                anim.speed = 0;
-            }
-            else
-            {
-                if (gameController.activePowerPellet)
-                {
-                    anim.speed = frightSpeedPercentages[gameController.level] / 100;
-                }
-                else
-                {
-                    anim.speed = defaultSpeedPercentages[gameController.level] / 100;
-                }
             }
                 
 
@@ -212,37 +219,47 @@ public class Pacman : MonoBehaviour {
                 || gameController.GetTile(tile.x, tile.y - input.y) == 2))
             {
                 input.y = 0;
-                anim.speed = 0;
-            }
-            else
-            {
-                if (gameController.activePowerPellet)
-                {
-                    anim.speed = frightSpeedPercentages[gameController.level] / 100;
-                }
-                else
-                {
-                    anim.speed = defaultSpeedPercentages[gameController.level] / 100;
-                }
             }
         }
     }
 
-    //For some reason tile coordinates do not round down if the coordinates are above 0.5
-    //So to fix it, always add/remove 0.25 (depending on direction) and round down
-    private void updatePosition()
+    // For some reason tile coordinates do not round down immediately,
+    // it takes 1-2 frames to round down.
+    public void UpdatePosition()
     {
         //tileX = Mathf.FloorToInt(Vector2.Lerp(startPosition, endPosition, t).x - 0.25f);
         //tileY = Mathf.FloorToInt(-1 * (Vector2.Lerp(startPosition, endPosition, t).y - 0.25f));
         tile = new Vector2((int)transform.position.x, (int)Math.Abs(transform.position.y));
     }
 
+    public void UpdateDotCollision()
+    {
+        if (gameController.GetPacTile(tile).tag == "PacDot" || gameController.GetPacTile(tile).tag == "Power Pellet")
+        {
+            Point point = (Point)gameController.GetPacTile(tile);
+            
+            if (!point.isConsumed)
+                point.consume();
+        }
+
+        // Check for collision with the Bonus Symbol
+        if (tile == gameController.bonusSymbol.tile && gameController.bonusSymbol.hasSpawned)
+            gameController.bonusSymbol.consume();
+    }
+
     void UpdateMoveSpeed()
     {
+        // The last index will be used after the level surpasses the array length. 
         if (!gameController.activePowerPellet)
-            moveSpeed = maxSpeed * (defaultSpeedPercentages[gameController.level] / 100);
+            if (gameController.level > defaultSpeedPercentages.Length - 1)
+                moveSpeed = maxSpeed * (defaultSpeedPercentages[defaultSpeedPercentages.Length - 1] / 100);
+            else
+                moveSpeed = maxSpeed * (defaultSpeedPercentages[gameController.level] / 100);
         else
-            moveSpeed = maxSpeed * (frightSpeedPercentages[gameController.level] / 100);
+            if (gameController.level > frightSpeedPercentages.Length - 1)
+                moveSpeed = maxSpeed * (frightSpeedPercentages[frightSpeedPercentages.Length - 1] / 100);
+            else
+                moveSpeed = maxSpeed * (frightSpeedPercentages[gameController.level] / 100);
     }
 
     public Directions VectorToDirection(Vector2 startPoint, Vector2 endPoint)

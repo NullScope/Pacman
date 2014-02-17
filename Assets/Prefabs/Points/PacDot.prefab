@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
-  - 61: {fileID: 6100000}
   - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: PacDot
@@ -30,17 +29,6 @@ Transform:
   m_LocalScale: {x: 12.5, y: 12.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!61 &6100000
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: .0199999996, y: .0199999996}
-  m_Center: {x: .0399999991, y: -.0399999991}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,13 +42,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
   cost: 1
-  isIntersection: 0
-  allowUpwards: 0
-  allowBottom: 0
-  allowLeft: 0
-  allowRight: 0
+  allowedDirections: 
   backgroundSprite: {fileID: 21300294, guid: a8abf0abf37cb774a89c74cd433c95cf, type: 3}
   points: 10
+  framePauses: 1
+  isConsumed: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,7 +76,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: -5
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_SortingLayerID: 4133436837
   m_Sprite: {fileID: 21300222, guid: a8abf0abf37cb774a89c74cd433c95cf, type: 3}

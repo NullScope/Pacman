@@ -9,7 +9,8 @@ public class GameController : MonoBehaviour
 {
 
     #region Variables
-    private int score;
+    private float score;
+    private float highScore;
     public int level;
     public int lifes;
     private int globalDotCount;
@@ -18,14 +19,23 @@ public class GameController : MonoBehaviour
     private float houseTimer;
     private byte[,] tiles = new byte[28, 36];
     private PacTile[,] pacTiles = new PacTile[28, 36];
+    [HideInInspector]
     public Pacman player;
-    public GhostAI Blinky, Clyde, Inky, Pinky;
-    public GhostAI.Modes startMode;
-    private GhostAI.Modes currentMode;
+    public Pacman pacmanPrefab;
+    [HideInInspector]
+    public GhostAI blinky, clyde, inky, pinky;
+    public GhostAI blinkyPrefab, clydePrefab, inkyPrefab, pinkyPrefab;
     public float PowerPelletTime;
     private float PPtimeLeft;
     public bool activePowerPellet;
     public bool bGlobalCounter;
+    public bool isPaused;
+    public BonusSymbol bonusSymbol;
+    public TextMesh scoreText;
+    public TextMesh highScoreText;
+    public TextMesh gameStatusText;
+    public TextMesh playerText;
+    public PointText pointTextPrefab;
     #endregion
 
     #region Properties
@@ -46,7 +56,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public int Score
+    public float Score
     {
         get
         {
@@ -62,15 +72,63 @@ public class GameController : MonoBehaviour
     // Use this for initialization
 	void Start () 
     {
-        currentMode = startMode;
+        StartCoroutine(StartGame());
 	}
+
+    private IEnumerator StartGame()
+    {
+        StartCoroutine(Pause(4f));
+        highScore = PlayerPrefs.GetFloat("Highscore");
+        highScoreText.text = highScore.ToString();
+        playerText.text = "Player One";
+        gameStatusText.text = "Ready!";
+        yield return new WaitForSeconds(2f);
+        playerText.text = "";
+        InstantiatePacman();
+        InstantiateGhosts();
+        yield return new WaitForSeconds(2f);
+        gameStatusText.text = "";
+        yield break;
+    }
+
+    private void InstantiateGhosts()
+    {
+        blinky = (GhostAI)Instantiate(blinkyPrefab, new Vector2(14f, -14.5f), blinkyPrefab.gameObject.transform.rotation);
+        pinky = (GhostAI)Instantiate(pinkyPrefab, pinkyPrefab.houseTile, pinkyPrefab.gameObject.transform.rotation);
+        inky = (GhostAI)Instantiate(inkyPrefab, inkyPrefab.houseTile, inkyPrefab.gameObject.transform.rotation);
+        clyde = (GhostAI)Instantiate(clydePrefab, clydePrefab.houseTile, clydePrefab.gameObject.transform.rotation);
+
+        blinky.gameController = this;
+        pinky.gameController = this;
+        inky.gameController = this;
+        clyde.gameController = this;
+    }
+
+    private void InstantiatePacman()
+    {
+        player = (Pacman)Instantiate(pacmanPrefab, pacmanPrefab.startPosition, pacmanPrefab.gameObject.transform.rotation);
+        player.gameController = this;
+    }
 
     // Update is called once per frame
     void Update()
     {   
+        if (isPaused)
+        {
+            return;
+        }
+
         updatePowerPellet();
         updateModeTimer();
         updateHouseTimer();
+        scoreText.text = Score.ToString();
+
+        if (Score > highScore)
+        {
+            PlayerPrefs.SetFloat("Highscore", score);
+            highScore = Score;
+            highScoreText.text = Score.ToString();
+        }
 	}
 
     void updatePowerPellet()
@@ -80,7 +138,7 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        PPtimeLeft -= Time.deltaTime;
+        PPtimeLeft -= Time.smoothDeltaTime;
 
         if (PPtimeLeft <= PowerPelletTime * 0.2)
         {
@@ -96,7 +154,7 @@ public class GameController : MonoBehaviour
 
     void updateHouseTimer()
     {
-        houseTimer += Time.deltaTime;
+        houseTimer += Time.smoothDeltaTime;
 
         if (level >= 5)
         {
@@ -115,29 +173,32 @@ public class GameController : MonoBehaviour
 
         houseTimer = 0;
 
-        if (!Pinky.isOutside)
+        if (!pinky.isOutside)
         {
-            Pinky.leaveGhostHouse();
+            pinky.leaveGhostHouse();
         }
         else
         {
-            if (!Inky.isOutside)
+            if (!inky.isOutside)
             {
-                Inky.leaveGhostHouse();
+                inky.leaveGhostHouse();
             }
             else
             {
-                if (!Clyde.isOutside)
+                if (!clyde.isOutside)
                 {
-                    Clyde.leaveGhostHouse();
+                    clyde.leaveGhostHouse();
                 }
             }
         }
     }
 
-    public void updateDotCounter()
+    public void UpdateDotCount()
     {
         houseTimer = 0f;
+
+        bonusSymbol.IncreaseDotCount();
+
         // If the Global Counter is active, use it instead
         if (bGlobalCounter)
         {
@@ -146,47 +207,47 @@ public class GameController : MonoBehaviour
             // Release Pinky from the Ghost House.
             if (globalDotCount == 7)
             {
-                if (!Pinky.isOutside)
+                if (!pinky.isOutside)
                 {
-                    Pinky.leaveGhostHouse();
+                    pinky.leaveGhostHouse();
                 }
             }
 
             if (globalDotCount == 17)
             {
-                if (!Inky.isOutside)
+                if (!inky.isOutside)
                 {
-                    Inky.leaveGhostHouse();
+                    inky.leaveGhostHouse();
                 }
             }
 
             if (globalDotCount == 32)
             {
                 // If Clyde is inside the house, release him AND set the global counter to false.
-                if (!Clyde.isOutside)
+                if (!clyde.isOutside)
                 {
-                    Clyde.leaveGhostHouse();
+                    clyde.leaveGhostHouse();
                     bGlobalCounter = false;
                 }
             }
         }
         else
         {
-            if (!Pinky.isOutside)
+            if (!pinky.isOutside)
             {
-                Pinky.IncreaseDotCount();
+                pinky.IncreaseDotCount();
             }
             else
             {
-                if (!Inky.isOutside)
+                if (!inky.isOutside)
                 {
-                    Inky.IncreaseDotCount();
+                    inky.IncreaseDotCount();
                 }
                 else
                 {
-                    if (!Clyde.isOutside)
+                    if (!clyde.isOutside)
                     {
-                        Clyde.IncreaseDotCount();
+                        clyde.IncreaseDotCount();
                     }
                 }
             }
@@ -201,7 +262,6 @@ public class GameController : MonoBehaviour
         }
 
         modeTimer += Time.deltaTime;
-        print("TIMER: " + modeTimer);
 
         switch (modeCount)
         {
@@ -335,12 +395,34 @@ public class GameController : MonoBehaviour
         globalDotCount = 0;
     }
 
+    public IEnumerator Pause(float duration)
+    {
+        isPaused = true;
+
+        if (duration == 0)
+        {
+            yield break;
+        }
+        else
+        {
+            yield return new WaitForSeconds(duration);
+            
+            isPaused = false;
+        }
+    }
+
+    public void Resume()
+    {
+        StopCoroutine("Pause");
+        isPaused = false;
+    }
+
     public void changeGhostModes(GhostAI.Modes newMode)
     {
-        Blinky.setGlobalMode(newMode);
-        Pinky.setGlobalMode(newMode);
-        Inky.setGlobalMode(newMode);
-        Clyde.setGlobalMode(newMode);
+        blinky.setGlobalMode(newMode);
+        pinky.setGlobalMode(newMode);
+        inky.setGlobalMode(newMode);
+        clyde.setGlobalMode(newMode);
     }
 
     public void startPowerPellet()
@@ -362,30 +444,30 @@ public class GameController : MonoBehaviour
     // Sets all ghosts vulnerability
     public void setGhostsVuln(bool vuln)
     {
-        Blinky.setVulnerability(vuln);
-        Clyde.setVulnerability(vuln);
-        Inky.setVulnerability(vuln);
-        Pinky.setVulnerability(vuln);
+        blinky.setVulnerability(vuln);
+        clyde.setVulnerability(vuln);
+        inky.setVulnerability(vuln);
+        pinky.setVulnerability(vuln);
     }
 
     // Sets all ghosts vulnerabilityEnding
     public void setGhostsVulnEnd(bool vulnEnd, bool changeMode)
     {
-        Blinky.setVulnerabilityEnd(vulnEnd, changeMode);
-        Clyde.setVulnerabilityEnd(vulnEnd, changeMode);
-        Inky.setVulnerabilityEnd(vulnEnd, changeMode);
-        Pinky.setVulnerabilityEnd(vulnEnd, changeMode);
+        blinky.setVulnerabilityEnd(vulnEnd, changeMode);
+        clyde.setVulnerabilityEnd(vulnEnd, changeMode);
+        inky.setVulnerabilityEnd(vulnEnd, changeMode);
+        pinky.setVulnerabilityEnd(vulnEnd, changeMode);
     }
 
     public void returnGhostsToDefault()
     {
-        Blinky.returnToDefault();
-        Clyde.returnToDefault();
-        Inky.returnToDefault();
-        Pinky.returnToDefault();
+        blinky.returnToDefault();
+        clyde.returnToDefault();
+        inky.returnToDefault();
+        pinky.returnToDefault();
     }
 
-    public void addTile(int x, int y, byte cost)
+    public void AddTile(int x, int y, byte cost)
     {
         tiles[x, y] = cost;
     }

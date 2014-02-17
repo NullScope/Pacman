@@ -45,7 +45,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: .986000001
+    width: .985000014
     height: 1
   near clip plane: .00999999978
   far clip plane: 1000
@@ -85,15 +85,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58492623ae52c374ca578a0b86c573bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
   lifes: 3
   player: {fileID: 0}
-  Blinky: {fileID: 0}
-  Clyde: {fileID: 0}
-  Inky: {fileID: 0}
-  Pinky: {fileID: 0}
-  startMode: 0
+  pacmanPrefab: {fileID: 11400000, guid: 330caf8e7f070e945bd567c60ab12e86, type: 2}
+  blinky: {fileID: 0}
+  clyde: {fileID: 0}
+  inky: {fileID: 0}
+  pinky: {fileID: 0}
+  blinkyPrefab: {fileID: 11400000, guid: ad401019e3068e04ca076b739e5bb594, type: 2}
+  clydePrefab: {fileID: 11400000, guid: a0f455b71c8b13e47a3b6b9ae6dceff8, type: 2}
+  inkyPrefab: {fileID: 11400000, guid: 1b097a14949a7014fb08076d821a5fb8, type: 2}
+  pinkyPrefab: {fileID: 11400000, guid: 15a2b3e9c79bbd54dbab6daacb233aec, type: 2}
   PowerPelletTime: 10
+  activePowerPellet: 0
   bGlobalCounter: 0
+  isPaused: 0
+  bonusSymbol: {fileID: 0}
+  scoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
+  gameStatusText: {fileID: 0}
+  playerText: {fileID: 0}
+  pointTextPrefab: {fileID: 11400000, guid: c566f9707014600499a1925362b1be30, type: 2}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
