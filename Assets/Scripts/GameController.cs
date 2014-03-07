@@ -17,8 +17,8 @@ public class GameController : MonoBehaviour
     private int modeCount;
     private float modeTimer;
     private float houseTimer;
-    private byte[,] tiles = new byte[28, 36];
-    private PacTile[,] pacTiles = new PacTile[28, 36];
+    public byte[,] tiles = new byte[28, 36];
+    public PacTile[,] pacTiles = new PacTile[28, 36];
     [HideInInspector]
     public Pacman player;
     public Pacman pacmanPrefab;
@@ -72,18 +72,27 @@ public class GameController : MonoBehaviour
     // Use this for initialization
 	void Start () 
     {
-        StartCoroutine(StartGame());
+        StartCoroutine(StartGame(false));
 	}
 
-    private IEnumerator StartGame()
+    public IEnumerator StartGame(bool isRestart)
     {
-        StartCoroutine(Pause(4f));
-        highScore = PlayerPrefs.GetFloat("Highscore");
-        highScoreText.text = highScore.ToString();
-        playerText.text = "Player One";
-        gameStatusText.text = "Ready!";
-        yield return new WaitForSeconds(2f);
-        playerText.text = "";
+        if (!isRestart)
+        {
+            StartCoroutine(Pause(4f));
+            highScore = PlayerPrefs.GetFloat("Highscore");
+            highScoreText.text = highScore.ToString();
+            playerText.text = "Player One";
+            gameStatusText.text = "Ready!";
+            yield return new WaitForSeconds(2f);
+            playerText.text = "";
+        }
+        else
+        {
+            StartCoroutine(Pause(2f));
+            gameStatusText.text = "Ready!";
+        }
+        
         InstantiatePacman();
         InstantiateGhosts();
         yield return new WaitForSeconds(2f);
@@ -391,8 +400,34 @@ public class GameController : MonoBehaviour
     // If Pacman dies, reset the ghosts back to the original position and set game flags
     public void PacmanDeath()
     {
+        if (!blinky)
+        {
+            return;
+        }
+
         bGlobalCounter = true;
         globalDotCount = 0;
+
+        // Destroy the game objects.
+        Destroy(blinky.gameObject);
+        Destroy(clyde.gameObject);
+        Destroy(inky.gameObject);
+        Destroy(pinky.gameObject);
+
+        // Destroy the scripts.
+        Destroy(blinky);
+        Destroy(clyde);
+        Destroy(inky);
+        Destroy(pinky);
+
+        blinky = null;
+        clyde = null;
+        inky = null;
+        pinky = null;
+
+        houseTimer = 0;
+        modeTimer = 0;
+        modeCount = 0;
     }
 
     public IEnumerator Pause(float duration)

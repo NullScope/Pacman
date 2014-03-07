@@ -18,7 +18,7 @@ public class Pacman : MonoBehaviour {
     public Vector2 tile;
     public Vector2 startPosition;
 
-    private bool isAlive;
+    public bool isAlive;
     private bool isFirstMove;
 
     private float moveSpeed;
@@ -76,6 +76,9 @@ public class Pacman : MonoBehaviour {
             anim.speed = 1;
         }
 
+        UpdatePosition();
+        UpdateDotCollision();
+
         if (isAlive == true)
         {
             updateAxis();
@@ -84,9 +87,6 @@ public class Pacman : MonoBehaviour {
                 StartCoroutine(move());
             }
         }
-
-        UpdatePosition();
-        UpdateDotCollision();
 
         // Always stop Running animation after Pacman moves a tile.
         if (input == Vector2.zero)
@@ -103,16 +103,23 @@ public class Pacman : MonoBehaviour {
         anim.SetBool("Running", false);
         anim.SetBool("Dead", true);
         input = Vector2.zero;
-        gameController.PacmanDeath();
     }
 
     //Sets Pacman position to respawn
     void Respawn()
     {
-        transform.position = startPosition;
+        /*transform.position = startPosition;
         isAlive = true;
         isFirstMove = true;
-        anim.SetBool("Dead", false);
+        anim.SetBool("Dead", false);*/
+        gameController.StartCoroutine(gameController.StartGame(true));
+        Destroy(this.gameObject);
+        Destroy(this);
+    }
+
+    void destroyGhosts()
+    {
+        gameController.PacmanDeath();
     }
 
     void playDeathBeep()
@@ -191,8 +198,8 @@ public class Pacman : MonoBehaviour {
         if (!isMoving)
         {
             if (Input.GetAxisRaw("Horizontal") != 0
-                && gameController.GetTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 0
-                && gameController.GetTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 2)
+             && gameController.GetTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 0
+             && gameController.GetTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 2)
             {
                 input.x = Input.GetAxisRaw("Horizontal");
                 input.y = 0;
@@ -227,8 +234,6 @@ public class Pacman : MonoBehaviour {
     // it takes 1-2 frames to round down.
     public void UpdatePosition()
     {
-        //tileX = Mathf.FloorToInt(Vector2.Lerp(startPosition, endPosition, t).x - 0.25f);
-        //tileY = Mathf.FloorToInt(-1 * (Vector2.Lerp(startPosition, endPosition, t).y - 0.25f));
         tile = new Vector2((int)transform.position.x, (int)Math.Abs(transform.position.y));
     }
 
