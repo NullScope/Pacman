@@ -15,7 +15,6 @@ public class PacTile : MonoBehaviour {
             GameObject Camera = GameObject.Find("Main Camera");
             gameController = Camera.GetComponent<GameController>();
         }
-        gameController.AddTile((int)gameObject.transform.position.x, (int)(-1 * gameObject.transform.position.y), cost);
         gameController.AddPacTile((int)gameObject.transform.position.x, (int)(-1 * gameObject.transform.position.y), this);
 	}
 

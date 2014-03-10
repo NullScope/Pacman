@@ -17,7 +17,6 @@ public class GameController : MonoBehaviour
     private int modeCount;
     private float modeTimer;
     private float houseTimer;
-    public byte[,] tiles = new byte[28, 36];
     public PacTile[,] pacTiles = new PacTile[28, 36];
     [HideInInspector]
     public Pacman player;
@@ -39,14 +38,6 @@ public class GameController : MonoBehaviour
     #endregion
 
     #region Properties
-    public byte[,] Tiles
-    {
-        get
-        {
-            return tiles;
-        }
-       
-    }
 
     public PacTile[,] PacTiles
     {
@@ -502,19 +493,9 @@ public class GameController : MonoBehaviour
         pinky.returnToDefault();
     }
 
-    public void AddTile(int x, int y, byte cost)
-    {
-        tiles[x, y] = cost;
-    }
-
     public void AddPacTile(int x, int y, PacTile pacTile)
     {
         pacTiles[x, y] = pacTile;
-    }
-
-    public PacTile GetPacTile(int x, int y)
-    {
-        return PacTiles[x, y];
     }
 
     public PacTile GetPacTile(Vector2 position)
@@ -522,8 +503,8 @@ public class GameController : MonoBehaviour
         return PacTiles[(int)position.x, (int)position.y];
     }
 
-    public byte GetTile(float x, float y)
+    public PacTile GetPacTile(int x, int y)
     {
-        return tiles[(int)x, (int)y];
+        return PacTiles[x, y];
     }
 }

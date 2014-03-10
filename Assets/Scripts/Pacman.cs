@@ -145,6 +145,7 @@ public class Pacman : MonoBehaviour {
                                       startPosition.y + System.Math.Sign(input.y));
         }
 
+        // Calculate rotation.
         if (input.x != 0)
         {
             newZ = input.x * 180;
@@ -195,35 +196,36 @@ public class Pacman : MonoBehaviour {
     //also check if Pacman auto-movement has hit a wall
     private void updateAxis()
     {
-        if (!isMoving)
+        if(!isMoving)
         {
             if (Input.GetAxisRaw("Horizontal") != 0
-             && gameController.GetTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 0
-             && gameController.GetTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 2)
+             && gameController.GetPacTile(new Vector2(tile.x + Input.GetAxisRaw("Horizontal"), tile.y)).cost != 0
+             && gameController.GetPacTile(new Vector2(tile.x + Input.GetAxisRaw("Horizontal"), tile.y)).cost != 2)
             {
                 input.x = Input.GetAxisRaw("Horizontal");
                 input.y = 0;
             }
 
             if (Input.GetAxisRaw("Vertical") != 0
-                && gameController.GetTile(tile.x, tile.y - Input.GetAxisRaw("Vertical")) != 0
-                && gameController.GetTile(tile.x, tile.y - Input.GetAxisRaw("Vertical")) != 2)
+             && gameController.GetPacTile(new Vector2(tile.x, tile.y - Input.GetAxisRaw("Vertical"))).cost != 0
+             && gameController.GetPacTile(new Vector2(tile.x, tile.y - Input.GetAxisRaw("Vertical"))).cost != 2)
             {
                 input.x = 0;
                 input.y = Input.GetAxisRaw("Vertical");
             }
 
+
             if (input.x != 0
-                && (gameController.GetTile(tile.x + input.x, tile.y) == 0
-                || gameController.GetTile(tile.x + input.x, tile.y) == 2))
+                && (gameController.GetPacTile(new Vector2(tile.x + input.x, tile.y)).cost == 0
+                || gameController.GetPacTile(new Vector2(tile.x + input.x, tile.y)).cost == 2))
             {
                 input.x = 0;
             }
-                
+
 
             if (input.y != 0
-                && (gameController.GetTile(tile.x, tile.y - input.y) == 0
-                || gameController.GetTile(tile.x, tile.y - input.y) == 2))
+                && (gameController.GetPacTile(new Vector2(tile.x, tile.y - input.y)).cost == 0
+                || gameController.GetPacTile(new Vector2(tile.x, tile.y - input.y)).cost == 2))
             {
                 input.y = 0;
             }

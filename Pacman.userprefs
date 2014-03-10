@@ -5,7 +5,7 @@
       <File FileName="Pacman.sln" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Point.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\pacman.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\pacman.cs" Line="15" Column="40" />
       <File FileName="Assets\Scripts\Ghosts\GhostAI.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
