@@ -18,12 +18,14 @@ public class GameController : MonoBehaviour
     private float modeTimer;
     private float houseTimer;
     public PacTile[,] pacTiles = new PacTile[28, 36];
+    public int totalPoints;
     [HideInInspector]
     public Pacman player;
     public Pacman pacmanPrefab;
     [HideInInspector]
     public GhostAI blinky, clyde, inky, pinky;
     public GhostAI blinkyPrefab, clydePrefab, inkyPrefab, pinkyPrefab;
+    public GameLevel GameLevelPrefab;
     public float PowerPelletTime;
     private float PPtimeLeft;
     public bool activePowerPellet;
@@ -63,6 +65,17 @@ public class GameController : MonoBehaviour
     // Use this for initialization
 	void Start () 
     {
+        GameLevel gameLevel = null;
+        if (GameObject.Find("Game Level(Clone)") == null)
+        {
+            gameLevel = (GameLevel)Instantiate(GameLevelPrefab, new Vector2(0, 0), GameLevelPrefab.gameObject.transform.rotation);
+        }
+        else
+        {
+            gameLevel = GameObject.Find("Game Level(Clone)").GetComponent<GameLevel>();
+        }
+
+        level = gameLevel.level++;
         StartCoroutine(StartGame(false));
 	}
 
@@ -129,6 +142,9 @@ public class GameController : MonoBehaviour
             highScore = Score;
             highScoreText.text = Score.ToString();
         }
+
+        if (totalPoints == 0)
+            Application.LoadLevel("Pacman");
 	}
 
     void updatePowerPellet()
@@ -148,7 +164,6 @@ public class GameController : MonoBehaviour
         if (PPtimeLeft <= 0)
         {
             endPowerPellet();
-
         }
     }
 
@@ -261,7 +276,7 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        modeTimer += Time.deltaTime;
+        modeTimer += Time.smoothDeltaTime;
 
         switch (modeCount)
         {

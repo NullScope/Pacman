@@ -375,7 +375,6 @@ public class GhostAI : MonoBehaviour {
                         }
                     }
                 }
-                currentDirection = VectorToDirection(startPosition, endPosition);
                 break;
 
             case(HouseModes.Entering):
@@ -412,8 +411,6 @@ public class GhostAI : MonoBehaviour {
                         }
                     }
                 }
-                
-                currentDirection = VectorToDirection(startPosition, endPosition);
                 break;
         }
 
@@ -548,16 +545,15 @@ public class GhostAI : MonoBehaviour {
                 break;
         }
 
-        // Special Check to warp zones.
-        if (nextPosition.x < 0 || nextPosition.y > 0 || gameController.pacTiles.GetLength(0) <= nextPosition.x || gameController.pacTiles.GetLength(1) <= Math.Abs(nextPosition.y))
+        // Special check for warp zones
+        if ((tile.x <= 0 && currentDirection == Directions.Left) || (tile.x >= gameController.pacTiles.GetLength(0) - 2 && currentDirection == Directions.Right) || (tile.y <= 0 && currentDirection == Directions.Up) || (tile.y >= gameController.pacTiles.GetLength(1) - 2 && currentDirection == Directions.Down))
         {
-            // The next position is out of boundaries, so move one more square, then teleport
             isWarping = true;
             return currentDirection;
         }
 
-        // If the ghost is off map, continue on the same direction.
-        if (startPosition.x < 0 || startPosition.y > 0 || gameController.pacTiles.GetLength(0) <= startPosition.x || gameController.pacTiles.GetLength(1) <= Math.Abs(startPosition.y))
+        // If the ghost is out of the map, continue on the same direction
+        if (tile.x < 0 || tile.x >= gameController.pacTiles.GetLength(0) || tile.y < 0 || tile.y >= gameController.pacTiles.GetLength(1))
         {
             return currentDirection;
         }
@@ -764,6 +760,8 @@ public class GhostAI : MonoBehaviour {
     public void Respawn()
     {
         anim.SetBool("Respawning", false);
+        anim.SetBool("Vulnerable", false);
+        anim.SetBool("VulnerableEnding", false);
         isVulnerable = false;
         isFirstMove = true;
         isMoving = false;
@@ -771,7 +769,10 @@ public class GhostAI : MonoBehaviour {
 
     public void setMode(Modes newMode)
     {
-        // If currentMode is not Idle, Entering or Leaving, revert direction
+        if(currentMode == Modes.Respawning && isOutside)
+        {
+            return;
+        }
 
         switch (currentDirection)
         {
@@ -840,6 +841,11 @@ public class GhostAI : MonoBehaviour {
     {
         anim.SetBool("VulnerableEnding", vulnEnd);
         
+        if (vulnEnd)
+        {
+            anim.SetBool("Vulnerable", false);
+        }
+   
         if (changeMode)
         {
             isVulnerable = false;

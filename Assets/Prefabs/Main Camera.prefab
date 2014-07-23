@@ -87,6 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   lifes: 3
+  totalPoints: 0
   player: {fileID: 0}
   pacmanPrefab: {fileID: 11400000, guid: 330caf8e7f070e945bd567c60ab12e86, type: 2}
   blinky: {fileID: 0}
@@ -97,6 +98,7 @@ MonoBehaviour:
   clydePrefab: {fileID: 11400000, guid: a0f455b71c8b13e47a3b6b9ae6dceff8, type: 2}
   inkyPrefab: {fileID: 11400000, guid: 1b097a14949a7014fb08076d821a5fb8, type: 2}
   pinkyPrefab: {fileID: 11400000, guid: 15a2b3e9c79bbd54dbab6daacb233aec, type: 2}
+  GameLevelPrefab: {fileID: 11400000, guid: 9db313b46e2df264b8b428ed4865f18f, type: 2}
   PowerPelletTime: 10
   activePowerPellet: 0
   bGlobalCounter: 0

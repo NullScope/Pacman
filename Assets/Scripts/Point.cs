@@ -10,6 +10,8 @@ public class Point : PacTile {
 	// Use this for initialization
 	new public void Start () {
         base.Start();
+
+        gameController.totalPoints++;
 	}
 
 	// Update is called once per frame
@@ -33,6 +35,7 @@ public class Point : PacTile {
         gameController.Score += points;
         gameController.UpdateDotCount();
         gameController.player.framePauses = framePauses;
+        gameController.totalPoints--;
         isConsumed = true;
     }
 }
