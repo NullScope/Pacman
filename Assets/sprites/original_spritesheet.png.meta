@@ -35,6 +35,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
@@ -54,6 +55,7 @@ TextureImporter:
         height: 13
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_1
       rect:
         serializedVersion: 2
@@ -63,6 +65,7 @@ TextureImporter:
         height: 13
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_2
       rect:
         serializedVersion: 2
@@ -72,6 +75,7 @@ TextureImporter:
         height: 13
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_3
       rect:
         serializedVersion: 2
@@ -81,6 +85,7 @@ TextureImporter:
         height: 14
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_4
       rect:
         serializedVersion: 2
@@ -90,6 +95,7 @@ TextureImporter:
         height: 14
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_5
       rect:
         serializedVersion: 2
@@ -99,6 +105,7 @@ TextureImporter:
         height: 14
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_6
       rect:
         serializedVersion: 2
@@ -108,6 +115,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_7
       rect:
         serializedVersion: 2
@@ -117,6 +125,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_14
       rect:
         serializedVersion: 2
@@ -126,6 +135,7 @@ TextureImporter:
         height: 32
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_15
       rect:
         serializedVersion: 2
@@ -135,6 +145,7 @@ TextureImporter:
         height: 13
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_16
       rect:
         serializedVersion: 2
@@ -144,6 +155,7 @@ TextureImporter:
         height: 13
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_17
       rect:
         serializedVersion: 2
@@ -153,6 +165,7 @@ TextureImporter:
         height: 14
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_18
       rect:
         serializedVersion: 2
@@ -162,6 +175,7 @@ TextureImporter:
         height: 14
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_19
       rect:
         serializedVersion: 2
@@ -171,6 +185,7 @@ TextureImporter:
         height: 16
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_20
       rect:
         serializedVersion: 2
@@ -180,6 +195,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_21
       rect:
         serializedVersion: 2
@@ -189,6 +205,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_22
       rect:
         serializedVersion: 2
@@ -198,6 +215,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_23
       rect:
         serializedVersion: 2
@@ -207,6 +225,7 @@ TextureImporter:
         height: 12
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_24
       rect:
         serializedVersion: 2
@@ -216,6 +235,7 @@ TextureImporter:
         height: 9
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_25
       rect:
         serializedVersion: 2
@@ -225,6 +245,7 @@ TextureImporter:
         height: 13
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_26
       rect:
         serializedVersion: 2
@@ -234,6 +255,7 @@ TextureImporter:
         height: 11
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_27
       rect:
         serializedVersion: 2
@@ -243,6 +265,7 @@ TextureImporter:
         height: 14
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_28
       rect:
         serializedVersion: 2
@@ -252,6 +275,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_29
       rect:
         serializedVersion: 2
@@ -261,6 +285,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_30
       rect:
         serializedVersion: 2
@@ -270,6 +295,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_31
       rect:
         serializedVersion: 2
@@ -279,6 +305,7 @@ TextureImporter:
         height: 32
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_32
       rect:
         serializedVersion: 2
@@ -288,6 +315,7 @@ TextureImporter:
         height: 12
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_33
       rect:
         serializedVersion: 2
@@ -297,6 +325,7 @@ TextureImporter:
         height: 9
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_34
       rect:
         serializedVersion: 2
@@ -306,6 +335,7 @@ TextureImporter:
         height: 13
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_35
       rect:
         serializedVersion: 2
@@ -315,6 +345,7 @@ TextureImporter:
         height: 11
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_36
       rect:
         serializedVersion: 2
@@ -324,6 +355,7 @@ TextureImporter:
         height: 15
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_37
       rect:
         serializedVersion: 2
@@ -333,6 +365,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_38
       rect:
         serializedVersion: 2
@@ -342,6 +375,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_39
       rect:
         serializedVersion: 2
@@ -351,6 +385,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_40
       rect:
         serializedVersion: 2
@@ -360,6 +395,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_41
       rect:
         serializedVersion: 2
@@ -369,6 +405,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_42
       rect:
         serializedVersion: 2
@@ -378,6 +415,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_43
       rect:
         serializedVersion: 2
@@ -387,6 +425,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_44
       rect:
         serializedVersion: 2
@@ -396,6 +435,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_45
       rect:
         serializedVersion: 2
@@ -405,6 +445,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_46
       rect:
         serializedVersion: 2
@@ -414,6 +455,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_47
       rect:
         serializedVersion: 2
@@ -423,6 +465,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_48
       rect:
         serializedVersion: 2
@@ -432,6 +475,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_49
       rect:
         serializedVersion: 2
@@ -441,6 +485,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_50
       rect:
         serializedVersion: 2
@@ -450,6 +495,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_51
       rect:
         serializedVersion: 2
@@ -459,6 +505,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_52
       rect:
         serializedVersion: 2
@@ -468,6 +515,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_53
       rect:
         serializedVersion: 2
@@ -477,6 +525,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_54
       rect:
         serializedVersion: 2
@@ -486,6 +535,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_55
       rect:
         serializedVersion: 2
@@ -495,6 +545,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_56
       rect:
         serializedVersion: 2
@@ -504,6 +555,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_57
       rect:
         serializedVersion: 2
@@ -513,6 +565,7 @@ TextureImporter:
         height: 32
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_58
       rect:
         serializedVersion: 2
@@ -522,6 +575,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_59
       rect:
         serializedVersion: 2
@@ -531,6 +585,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_60
       rect:
         serializedVersion: 2
@@ -540,6 +595,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_61
       rect:
         serializedVersion: 2
@@ -549,6 +605,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_62
       rect:
         serializedVersion: 2
@@ -558,6 +615,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_63
       rect:
         serializedVersion: 2
@@ -567,6 +625,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_64
       rect:
         serializedVersion: 2
@@ -576,6 +635,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_65
       rect:
         serializedVersion: 2
@@ -585,6 +645,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_66
       rect:
         serializedVersion: 2
@@ -594,6 +655,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_67
       rect:
         serializedVersion: 2
@@ -603,6 +665,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_68
       rect:
         serializedVersion: 2
@@ -612,6 +675,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_69
       rect:
         serializedVersion: 2
@@ -621,6 +685,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_70
       rect:
         serializedVersion: 2
@@ -630,6 +695,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_71
       rect:
         serializedVersion: 2
@@ -639,6 +705,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_72
       rect:
         serializedVersion: 2
@@ -648,6 +715,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_73
       rect:
         serializedVersion: 2
@@ -657,6 +725,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_74
       rect:
         serializedVersion: 2
@@ -666,6 +735,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_75
       rect:
         serializedVersion: 2
@@ -675,6 +745,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_76
       rect:
         serializedVersion: 2
@@ -684,6 +755,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_77
       rect:
         serializedVersion: 2
@@ -693,6 +765,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_78
       rect:
         serializedVersion: 2
@@ -702,6 +775,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_79
       rect:
         serializedVersion: 2
@@ -711,6 +785,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_80
       rect:
         serializedVersion: 2
@@ -720,6 +795,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_81
       rect:
         serializedVersion: 2
@@ -729,6 +805,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_82
       rect:
         serializedVersion: 2
@@ -738,6 +815,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_83
       rect:
         serializedVersion: 2
@@ -747,6 +825,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_84
       rect:
         serializedVersion: 2
@@ -756,6 +835,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_85
       rect:
         serializedVersion: 2
@@ -765,6 +845,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_86
       rect:
         serializedVersion: 2
@@ -774,6 +855,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_87
       rect:
         serializedVersion: 2
@@ -783,6 +865,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_88
       rect:
         serializedVersion: 2
@@ -792,6 +875,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_89
       rect:
         serializedVersion: 2
@@ -801,6 +885,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_90
       rect:
         serializedVersion: 2
@@ -810,6 +895,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_91
       rect:
         serializedVersion: 2
@@ -819,6 +905,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_92
       rect:
         serializedVersion: 2
@@ -828,6 +915,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_93
       rect:
         serializedVersion: 2
@@ -837,6 +925,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_94
       rect:
         serializedVersion: 2
@@ -846,6 +935,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_95
       rect:
         serializedVersion: 2
@@ -855,6 +945,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_96
       rect:
         serializedVersion: 2
@@ -864,6 +955,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_97
       rect:
         serializedVersion: 2
@@ -873,6 +965,7 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_98
       rect:
         serializedVersion: 2
@@ -882,6 +975,7 @@ TextureImporter:
         height: 11
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_99
       rect:
         serializedVersion: 2
@@ -891,6 +985,7 @@ TextureImporter:
         height: 14
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_100
       rect:
         serializedVersion: 2
@@ -900,6 +995,7 @@ TextureImporter:
         height: 14
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_101
       rect:
         serializedVersion: 2
@@ -909,6 +1005,7 @@ TextureImporter:
         height: 12
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_102
       rect:
         serializedVersion: 2
@@ -916,8 +1013,9 @@ TextureImporter:
         y: 103
         width: 11
         height: 14
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_103
       rect:
         serializedVersion: 2
@@ -927,6 +1025,7 @@ TextureImporter:
         height: 8
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_104
       rect:
         serializedVersion: 2
@@ -936,6 +1035,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_105
       rect:
         serializedVersion: 2
@@ -945,6 +1045,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_106
       rect:
         serializedVersion: 2
@@ -954,6 +1055,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_107
       rect:
         serializedVersion: 2
@@ -963,6 +1065,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_108
       rect:
         serializedVersion: 2
@@ -972,6 +1075,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_109
       rect:
         serializedVersion: 2
@@ -981,6 +1085,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_110
       rect:
         serializedVersion: 2
@@ -990,6 +1095,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_111
       rect:
         serializedVersion: 2
@@ -999,6 +1105,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_112
       rect:
         serializedVersion: 2
@@ -1008,6 +1115,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_113
       rect:
         serializedVersion: 2
@@ -1017,6 +1125,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_114
       rect:
         serializedVersion: 2
@@ -1026,6 +1135,7 @@ TextureImporter:
         height: 11
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_115
       rect:
         serializedVersion: 2
@@ -1035,6 +1145,7 @@ TextureImporter:
         height: 12
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_116
       rect:
         serializedVersion: 2
@@ -1042,8 +1153,9 @@ TextureImporter:
         y: 84
         width: 11
         height: 11
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_117
       rect:
         serializedVersion: 2
@@ -1053,6 +1165,7 @@ TextureImporter:
         height: 8
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_118
       rect:
         serializedVersion: 2
@@ -1062,6 +1175,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_119
       rect:
         serializedVersion: 2
@@ -1071,6 +1185,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_120
       rect:
         serializedVersion: 2
@@ -1080,6 +1195,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_121
       rect:
         serializedVersion: 2
@@ -1089,6 +1205,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_122
       rect:
         serializedVersion: 2
@@ -1098,6 +1215,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_123
       rect:
         serializedVersion: 2
@@ -1107,6 +1225,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_124
       rect:
         serializedVersion: 2
@@ -1116,6 +1235,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_125
       rect:
         serializedVersion: 2
@@ -1125,6 +1245,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_134
       rect:
         serializedVersion: 2
@@ -1134,6 +1255,7 @@ TextureImporter:
         height: 11
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_135
       rect:
         serializedVersion: 2
@@ -1143,6 +1265,7 @@ TextureImporter:
         height: 12
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_136
       rect:
         serializedVersion: 2
@@ -1150,8 +1273,9 @@ TextureImporter:
         y: 64
         width: 12
         height: 13
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_137
       rect:
         serializedVersion: 2
@@ -1161,6 +1285,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_138
       rect:
         serializedVersion: 2
@@ -1170,6 +1295,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_139
       rect:
         serializedVersion: 2
@@ -1179,6 +1305,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_140
       rect:
         serializedVersion: 2
@@ -1188,6 +1315,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_141
       rect:
         serializedVersion: 2
@@ -1197,6 +1325,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_142
       rect:
         serializedVersion: 2
@@ -1206,6 +1335,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_143
       rect:
         serializedVersion: 2
@@ -1215,6 +1345,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_144
       rect:
         serializedVersion: 2
@@ -1224,6 +1355,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_145
       rect:
         serializedVersion: 2
@@ -1233,6 +1365,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_146
       rect:
         serializedVersion: 2
@@ -1242,6 +1375,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_147
       rect:
         serializedVersion: 2
@@ -1251,6 +1385,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_148
       rect:
         serializedVersion: 2
@@ -1260,6 +1395,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_149
       rect:
         serializedVersion: 2
@@ -1269,6 +1405,7 @@ TextureImporter:
         height: 14
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_150
       rect:
         serializedVersion: 2
@@ -1278,6 +1415,7 @@ TextureImporter:
         height: 14
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_151
       rect:
         serializedVersion: 2
@@ -1287,6 +1425,7 @@ TextureImporter:
         height: 12
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_153
       rect:
         serializedVersion: 2
@@ -1296,6 +1435,7 @@ TextureImporter:
         height: 9
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_154
       rect:
         serializedVersion: 2
@@ -1305,6 +1445,7 @@ TextureImporter:
         height: 8
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_155
       rect:
         serializedVersion: 2
@@ -1314,6 +1455,7 @@ TextureImporter:
         height: 6
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_156
       rect:
         serializedVersion: 2
@@ -1323,6 +1465,7 @@ TextureImporter:
         height: 5
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_157
       rect:
         serializedVersion: 2
@@ -1332,6 +1475,7 @@ TextureImporter:
         height: 5
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_158
       rect:
         serializedVersion: 2
@@ -1341,6 +1485,7 @@ TextureImporter:
         height: 6
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_159
       rect:
         serializedVersion: 2
@@ -1350,6 +1495,7 @@ TextureImporter:
         height: 7
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_160
       rect:
         serializedVersion: 2
@@ -1359,6 +1505,7 @@ TextureImporter:
         height: 7
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_161
       rect:
         serializedVersion: 2
@@ -1368,6 +1515,7 @@ TextureImporter:
         height: 7
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_162
       rect:
         serializedVersion: 2
@@ -1377,6 +1525,7 @@ TextureImporter:
         height: 8
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_163
       rect:
         serializedVersion: 2
@@ -1386,6 +1535,7 @@ TextureImporter:
         height: 9
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_164
       rect:
         serializedVersion: 2
@@ -1395,6 +1545,7 @@ TextureImporter:
         height: 9
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_165
       rect:
         serializedVersion: 2
@@ -1404,6 +1555,7 @@ TextureImporter:
         height: 9
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_166
       rect:
         serializedVersion: 2
@@ -1413,6 +1565,7 @@ TextureImporter:
         height: 5
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_161
       rect:
         serializedVersion: 2
@@ -1422,6 +1575,7 @@ TextureImporter:
         height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_161
       rect:
         serializedVersion: 2
@@ -1431,15 +1585,17 @@ TextureImporter:
         height: 10
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_162
       rect:
         serializedVersion: 2
         x: 219
-        y: 45
+        y: 43
         width: 7
-        height: 11
+        height: 13
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_163
       rect:
         serializedVersion: 2
@@ -1449,6 +1605,7 @@ TextureImporter:
         height: 6
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_164
       rect:
         serializedVersion: 2
@@ -1458,6 +1615,7 @@ TextureImporter:
         height: 4
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_157
       rect:
         serializedVersion: 2
@@ -1467,6 +1625,7 @@ TextureImporter:
         height: 4
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_158
       rect:
         serializedVersion: 2
@@ -1476,6 +1635,7 @@ TextureImporter:
         height: 5
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_159
       rect:
         serializedVersion: 2
@@ -1485,6 +1645,7 @@ TextureImporter:
         height: 5
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_160
       rect:
         serializedVersion: 2
@@ -1494,6 +1655,7 @@ TextureImporter:
         height: 5
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: original_spritesheet_161
       rect:
         serializedVersion: 2
@@ -1503,5 +1665,6 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

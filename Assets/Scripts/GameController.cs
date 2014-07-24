@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
     public GhostAI blinky, clyde, inky, pinky;
     public GhostAI blinkyPrefab, clydePrefab, inkyPrefab, pinkyPrefab;
     public GameLevel GameLevelPrefab;
-    public float PowerPelletTime;
+    public float[] PowerPelletTimes;
     private float PPtimeLeft;
     public bool activePowerPellet;
     public bool bGlobalCounter;
@@ -37,6 +37,10 @@ public class GameController : MonoBehaviour
     public TextMesh gameStatusText;
     public TextMesh playerText;
     public PointText pointTextPrefab;
+    public Vector2[] symbolPositions;
+    public Vector2[] lifePositions;
+    public List<GameObject> lifeSprites = new List<GameObject>();
+    public Sprite lifeSprite;
     #endregion
 
     #region Properties
@@ -66,6 +70,7 @@ public class GameController : MonoBehaviour
 	void Start () 
     {
         GameLevel gameLevel = null;
+
         if (GameObject.Find("Game Level(Clone)") == null)
         {
             gameLevel = (GameLevel)Instantiate(GameLevelPrefab, new Vector2(0, 0), GameLevelPrefab.gameObject.transform.rotation);
@@ -76,11 +81,46 @@ public class GameController : MonoBehaviour
         }
 
         level = gameLevel.level++;
+
+        var positionI = 0;
+
+        for (int i = (level >= 5 ? level - 5: 0); i < level; i++)
+        {
+            var symbolObject = new GameObject("symbol" + i);
+            symbolObject.AddComponent("SpriteRenderer");
+            symbolObject.GetComponent<SpriteRenderer>().sprite = bonusSymbol.bonusSymbols[(i >= bonusSymbol.bonusSymbols.Length ? bonusSymbol.bonusSymbols.Length - 1 : i)];
+            symbolObject.transform.localScale = new Vector3(12.5f, 12.5f, 1);
+            symbolObject.transform.position = symbolPositions[positionI];
+            positionI++;
+        }
+
+        for (int i = 0; i < lifePositions.Length; i++)
+        {
+
+            var lifeObject = new GameObject("life" + i);
+            lifeObject.AddComponent("SpriteRenderer");
+            lifeObject.GetComponent<SpriteRenderer>().sprite = lifeSprite;
+            lifeObject.transform.localScale = new Vector3(12.5f, 12.5f, 1);
+            lifeObject.transform.position = lifePositions[i];
+
+            lifeSprites.Add(lifeObject);
+
+        }
+
         StartCoroutine(StartGame(false));
 	}
 
     public IEnumerator StartGame(bool isRestart)
     {
+        if (lifes == 0)
+        {
+            StartCoroutine(Pause(0));
+            gameStatusText.text = "GAME OVER";
+            gameStatusText.color = Color.red;
+            yield return new WaitForSeconds(4f);
+            Application.LoadLevel("Pacman");
+            yield break;
+        }
         if (!isRestart)
         {
             StartCoroutine(Pause(4f));
@@ -121,6 +161,8 @@ public class GameController : MonoBehaviour
     {
         player = (Pacman)Instantiate(pacmanPrefab, pacmanPrefab.startPosition, pacmanPrefab.gameObject.transform.rotation);
         player.gameController = this;
+        Destroy(lifeSprites[lifes-1]);
+        lifes--;
     }
 
     // Update is called once per frame
@@ -156,7 +198,7 @@ public class GameController : MonoBehaviour
 
         PPtimeLeft -= Time.smoothDeltaTime;
 
-        if (PPtimeLeft <= PowerPelletTime * 0.2)
+        if (PPtimeLeft <= PowerPelletTimes[(level >= PowerPelletTimes.Length ? PowerPelletTimes.Length - 1 : level)] * 0.2)
         {
             setGhostsVulnEnd(true, false);
         }
@@ -470,7 +512,7 @@ public class GameController : MonoBehaviour
     {
         // Set bPowerPellet to true so Update can countdown the time left
         activePowerPellet = true;
-        PPtimeLeft = PowerPelletTime;
+        PPtimeLeft = PowerPelletTimes[(level >= PowerPelletTimes.Length ? PowerPelletTimes.Length - 1 : level)];
         setGhostsVuln(true);
         setGhostsVulnEnd(false, false);
     }

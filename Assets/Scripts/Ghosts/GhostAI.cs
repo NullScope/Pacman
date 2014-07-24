@@ -733,19 +733,26 @@ public class GhostAI : MonoBehaviour {
         }
         else
         {
-            if (inTunnel)
+            if (currentMode == Modes.Respawning && isOutside)
             {
-                if (gameController.level > tunnelSpeedPercentages.Length - 1)
-                    moveSpeed = maxSpeed * (tunnelSpeedPercentages[tunnelSpeedPercentages.Length - 1] / 100);
-                else
-                    moveSpeed = maxSpeed * (tunnelSpeedPercentages[gameController.level] / 100);
+                moveSpeed = maxSpeed * 2;
             }
             else
             {
-                if (gameController.level > defaultSpeedPercentages.Length - 1)
-                    moveSpeed = maxSpeed * (defaultSpeedPercentages[defaultSpeedPercentages.Length - 1] / 100);
+                if (inTunnel)
+                {
+                    if (gameController.level > tunnelSpeedPercentages.Length - 1)
+                        moveSpeed = maxSpeed * (tunnelSpeedPercentages[tunnelSpeedPercentages.Length - 1] / 100);
+                    else
+                        moveSpeed = maxSpeed * (tunnelSpeedPercentages[gameController.level] / 100);
+                }
                 else
-                    moveSpeed = maxSpeed * (defaultSpeedPercentages[gameController.level] / 100);
+                {
+                    if (gameController.level > defaultSpeedPercentages.Length - 1)
+                        moveSpeed = maxSpeed * (defaultSpeedPercentages[defaultSpeedPercentages.Length - 1] / 100);
+                    else
+                        moveSpeed = maxSpeed * (defaultSpeedPercentages[gameController.level] / 100);
+                }
             }
         }
     }

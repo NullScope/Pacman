@@ -6,7 +6,6 @@ public class GameLevel : MonoBehaviour
     public int level;
     void Awake()
     {
-        print(level);
         DontDestroyOnLoad(this);
     }
 
