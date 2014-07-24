@@ -453,6 +453,8 @@ public class GameController : MonoBehaviour
             return;
         }
 
+        StartCoroutine(Pause(1.25f));
+
         bGlobalCounter = true;
         globalDotCount = 0;
 
