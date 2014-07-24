@@ -18,7 +18,7 @@ public class Pacman : MonoBehaviour {
     public Vector2 tile;
     public Vector2 startPosition;
 
-    private bool isAlive;
+    public bool isAlive;
     private bool isFirstMove;
 
     private float moveSpeed;
@@ -41,8 +41,7 @@ public class Pacman : MonoBehaviour {
 
         if (gameController == null)
         {
-            GameObject Camera = GameObject.Find("Main Camera");
-            gameController = Camera.GetComponent<GameController>();
+            gameController = GameObject.Find("Main Camera").GetComponent<GameController>();
         }
 
         switch (startDirection)
@@ -76,6 +75,9 @@ public class Pacman : MonoBehaviour {
             anim.speed = 1;
         }
 
+        UpdatePosition();
+        UpdateDotCollision();
+
         if (isAlive == true)
         {
             updateAxis();
@@ -84,9 +86,6 @@ public class Pacman : MonoBehaviour {
                 StartCoroutine(move());
             }
         }
-
-        UpdatePosition();
-        UpdateDotCollision();
 
         // Always stop Running animation after Pacman moves a tile.
         if (input == Vector2.zero)
@@ -103,16 +102,23 @@ public class Pacman : MonoBehaviour {
         anim.SetBool("Running", false);
         anim.SetBool("Dead", true);
         input = Vector2.zero;
-        gameController.PacmanDeath();
     }
 
     //Sets Pacman position to respawn
     void Respawn()
     {
-        transform.position = startPosition;
+        /*transform.position = startPosition;
         isAlive = true;
         isFirstMove = true;
-        anim.SetBool("Dead", false);
+        anim.SetBool("Dead", false);*/
+        gameController.StartCoroutine(gameController.StartGame(true));
+        Destroy(this.gameObject);
+        Destroy(this);
+    }
+
+    void destroyGhosts()
+    {
+        gameController.PacmanDeath();
     }
 
     void playDeathBeep()
@@ -126,6 +132,30 @@ public class Pacman : MonoBehaviour {
         Vector2 endPosition, startPosition;
         isMoving = true;
 
+        if (tile.x < 0)
+        {
+            transform.position = new Vector2(gameController.pacTiles.GetLength(0) + 0.5f, transform.position.y);
+        }
+        else
+        {
+            if (tile.x >= gameController.pacTiles.GetLength(0))
+            {
+                transform.position = new Vector2(-0.5f, transform.position.y);
+            }
+        }
+
+        if (tile.y < 0)
+        {
+            transform.position = new Vector2(transform.position.x, -1 * gameController.pacTiles.GetLength(1)+0.5f);
+        }
+        else
+        {
+            if (tile.y >= gameController.pacTiles.GetLength(1))
+            {
+                transform.position = new Vector2(transform.position.x, 0.5f);
+            }
+        }
+
         startPosition = transform.position;
         
         // If its the first time Pacman moving from the respawn point,
@@ -138,6 +168,7 @@ public class Pacman : MonoBehaviour {
                                       startPosition.y + System.Math.Sign(input.y));
         }
 
+        // Calculate rotation.
         if (input.x != 0)
         {
             newZ = input.x * 180;
@@ -188,37 +219,71 @@ public class Pacman : MonoBehaviour {
     //also check if Pacman auto-movement has hit a wall
     private void updateAxis()
     {
-        if (!isMoving)
+        if(!isMoving)
         {
-            if (Input.GetAxisRaw("Horizontal") != 0
-                && gameController.GetTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 0
-                && gameController.GetTile(tile.x + Input.GetAxisRaw("Horizontal"), tile.y) != 2)
+            if (Input.GetAxisRaw("Horizontal") != 0)
             {
-                input.x = Input.GetAxisRaw("Horizontal");
-                input.y = 0;
-            }
-
-            if (Input.GetAxisRaw("Vertical") != 0
-                && gameController.GetTile(tile.x, tile.y - Input.GetAxisRaw("Vertical")) != 0
-                && gameController.GetTile(tile.x, tile.y - Input.GetAxisRaw("Vertical")) != 2)
-            {
-                input.x = 0;
-                input.y = Input.GetAxisRaw("Vertical");
-            }
-
-            if (input.x != 0
-                && (gameController.GetTile(tile.x + input.x, tile.y) == 0
-                || gameController.GetTile(tile.x + input.x, tile.y) == 2))
-            {
-                input.x = 0;
-            }
+                // If pacman is outside of the maze, prevents out of bounds errors
+                if (tile.x + Input.GetAxisRaw("Horizontal") < 0 || tile.x + Input.GetAxisRaw("Horizontal") >= gameController.pacTiles.GetLength(0))
+                {
+                    input.x = Input.GetAxisRaw("Horizontal");
+                    input.y = 0;
+                }
+                else
+                {
+                    if (gameController.GetPacTile(new Vector2(tile.x + Input.GetAxisRaw("Horizontal"), tile.y)).cost != 0
+                     && gameController.GetPacTile(new Vector2(tile.x + Input.GetAxisRaw("Horizontal"), tile.y)).cost != 2)
+                    {
+                        input.x = Input.GetAxisRaw("Horizontal");
+                        input.y = 0;
+                    }
+                }
                 
+            }
 
-            if (input.y != 0
-                && (gameController.GetTile(tile.x, tile.y - input.y) == 0
-                || gameController.GetTile(tile.x, tile.y - input.y) == 2))
+            if (Input.GetAxisRaw("Vertical") != 0)
             {
-                input.y = 0;
+                if (tile.y + Input.GetAxisRaw("Vertical") < 0 || tile.y + Input.GetAxisRaw("Vertical") >= gameController.pacTiles.GetLength(1))
+                {
+                    input.x = 0;
+                    input.y = Input.GetAxisRaw("Vertical");
+                }
+                else
+                {
+                    if (gameController.GetPacTile(new Vector2(tile.x, tile.y - Input.GetAxisRaw("Vertical"))).cost != 0
+                     && gameController.GetPacTile(new Vector2(tile.x, tile.y - Input.GetAxisRaw("Vertical"))).cost != 2)
+                    {
+                        input.x = 0;
+                        input.y = Input.GetAxisRaw("Vertical");
+                    }
+                }
+                
+            }
+
+
+            if (input.x != 0)
+            {
+                // If pacman is outside of the maze, prevents out of bounds errors
+                if (tile.x > 0 && tile.x < gameController.pacTiles.GetLength(0) - 1)
+                {
+                    if (gameController.GetPacTile(new Vector2(tile.x + input.x, tile.y)).cost == 0 || gameController.GetPacTile(new Vector2(tile.x + input.x, tile.y)).cost == 2)
+                    {
+                        input.x = 0;
+                    }
+                }
+            }
+
+
+            if (input.y != 0)
+            {
+                // If pacman is outside of the maze, prevents out of bounds errors
+                if (tile.y > 0 && tile.y < gameController.pacTiles.GetLength(1) - 1)
+                {
+                    if (gameController.GetPacTile(new Vector2(tile.x, tile.y - input.y)).cost == 0 || gameController.GetPacTile(new Vector2(tile.x, tile.y - input.y)).cost == 2)
+                    {
+                        input.y = 0;
+                    }
+                }
             }
         }
     }
@@ -227,13 +292,33 @@ public class Pacman : MonoBehaviour {
     // it takes 1-2 frames to round down.
     public void UpdatePosition()
     {
-        //tileX = Mathf.FloorToInt(Vector2.Lerp(startPosition, endPosition, t).x - 0.25f);
-        //tileY = Mathf.FloorToInt(-1 * (Vector2.Lerp(startPosition, endPosition, t).y - 0.25f));
+        
         tile = new Vector2((int)transform.position.x, (int)Math.Abs(transform.position.y));
+
+        // Current Center Tile.
+        Debug.DrawLine(new Vector3(tile.x, -1 * tile.y), new Vector3(tile.x + 1, -1 * tile.y), new Color(130, 0, 255, 255), 0.0f, false);
+        Debug.DrawLine(new Vector3(tile.x, -1 * tile.y - 1), new Vector3(tile.x + 1, -1 * tile.y - 1), new Color(130, 0, 255, 255), 0.0f, false);
+        Debug.DrawLine(new Vector3(tile.x, -1 * tile.y), new Vector3(tile.x, -1 * tile.y - 1), new Color(130, 0, 255, 255), 0.0f, false);
+        Debug.DrawLine(new Vector3(tile.x + 1, -1 * tile.y), new Vector3(tile.x + 1, -1 * tile.y - 1), new Color(130, 0, 255, 255), 0.0f, false);
+
+        if (tile.x + input.x > 0 && tile.x + input.x < gameController.pacTiles.GetLength(0) - 1 && tile.y - input.y > 0 && tile.y + input.y < gameController.pacTiles.GetLength(1) - 1)
+        {
+            PacTile targetTile = gameController.GetPacTile(new Vector2(tile.x + input.x, tile.y - input.y));
+            // Target Tile.
+            Debug.DrawLine(new Vector3(targetTile.transform.position.x, targetTile.transform.position.y), new Vector3(targetTile.transform.position.x + 1, targetTile.transform.position.y), new Color(0, 0, 255, 255), 0.0f, false);
+            Debug.DrawLine(new Vector3(targetTile.transform.position.x, targetTile.transform.position.y - 1), new Vector3(targetTile.transform.position.x + 1, targetTile.transform.position.y - 1), new Color(0, 0, 255, 255), 0.0f, false);
+            Debug.DrawLine(new Vector3(targetTile.transform.position.x, targetTile.transform.position.y), new Vector3(targetTile.transform.position.x, targetTile.transform.position.y), new Color(0, 0, 255, 255), 0.0f, false);
+            Debug.DrawLine(new Vector3(targetTile.transform.position.x + 1, targetTile.transform.position.y), new Vector3(targetTile.transform.position.x + 1, targetTile.transform.position.y - 1), new Color(0, 0, 255, 255), 0.0f, false);
+        }
     }
 
     public void UpdateDotCollision()
     {
+        if (tile.x <= 0 || tile.x >= gameController.pacTiles.GetLength(0) || tile.y <= 0 || tile.y >= gameController.pacTiles.GetLength(1))
+        {
+            return;
+        }
+
         if (gameController.GetPacTile(tile).tag == "PacDot" || gameController.GetPacTile(tile).tag == "Power Pellet")
         {
             Point point = (Point)gameController.GetPacTile(tile);

@@ -17,15 +17,16 @@ public class GameController : MonoBehaviour
     private int modeCount;
     private float modeTimer;
     private float houseTimer;
-    private byte[,] tiles = new byte[28, 36];
-    private PacTile[,] pacTiles = new PacTile[28, 36];
+    public PacTile[,] pacTiles = new PacTile[28, 36];
+    public int totalPoints;
     [HideInInspector]
     public Pacman player;
     public Pacman pacmanPrefab;
     [HideInInspector]
     public GhostAI blinky, clyde, inky, pinky;
     public GhostAI blinkyPrefab, clydePrefab, inkyPrefab, pinkyPrefab;
-    public float PowerPelletTime;
+    public GameLevel GameLevelPrefab;
+    public float[] PowerPelletTimes;
     private float PPtimeLeft;
     public bool activePowerPellet;
     public bool bGlobalCounter;
@@ -36,17 +37,13 @@ public class GameController : MonoBehaviour
     public TextMesh gameStatusText;
     public TextMesh playerText;
     public PointText pointTextPrefab;
+    public Vector2[] symbolPositions;
+    public Vector2[] lifePositions;
+    public List<GameObject> lifeSprites = new List<GameObject>();
+    public Sprite lifeSprite;
     #endregion
 
     #region Properties
-    public byte[,] Tiles
-    {
-        get
-        {
-            return tiles;
-        }
-       
-    }
 
     public PacTile[,] PacTiles
     {
@@ -72,18 +69,74 @@ public class GameController : MonoBehaviour
     // Use this for initialization
 	void Start () 
     {
-        StartCoroutine(StartGame());
+        GameLevel gameLevel = null;
+
+        if (GameObject.Find("Game Level(Clone)") == null)
+        {
+            gameLevel = (GameLevel)Instantiate(GameLevelPrefab, new Vector2(0, 0), GameLevelPrefab.gameObject.transform.rotation);
+        }
+        else
+        {
+            gameLevel = GameObject.Find("Game Level(Clone)").GetComponent<GameLevel>();
+        }
+
+        level = gameLevel.level++;
+
+        var positionI = 0;
+
+        for (int i = (level >= 5 ? level - 5: 0); i < level; i++)
+        {
+            var symbolObject = new GameObject("symbol" + i);
+            symbolObject.AddComponent("SpriteRenderer");
+            symbolObject.GetComponent<SpriteRenderer>().sprite = bonusSymbol.bonusSymbols[(i >= bonusSymbol.bonusSymbols.Length ? bonusSymbol.bonusSymbols.Length - 1 : i)];
+            symbolObject.transform.localScale = new Vector3(12.5f, 12.5f, 1);
+            symbolObject.transform.position = symbolPositions[positionI];
+            positionI++;
+        }
+
+        for (int i = 0; i < lifePositions.Length; i++)
+        {
+
+            var lifeObject = new GameObject("life" + i);
+            lifeObject.AddComponent("SpriteRenderer");
+            lifeObject.GetComponent<SpriteRenderer>().sprite = lifeSprite;
+            lifeObject.transform.localScale = new Vector3(12.5f, 12.5f, 1);
+            lifeObject.transform.position = lifePositions[i];
+
+            lifeSprites.Add(lifeObject);
+
+        }
+
+        StartCoroutine(StartGame(false));
 	}
 
-    private IEnumerator StartGame()
+    public IEnumerator StartGame(bool isRestart)
     {
-        StartCoroutine(Pause(4f));
-        highScore = PlayerPrefs.GetFloat("Highscore");
-        highScoreText.text = highScore.ToString();
-        playerText.text = "Player One";
-        gameStatusText.text = "Ready!";
-        yield return new WaitForSeconds(2f);
-        playerText.text = "";
+        if (lifes == 0)
+        {
+            StartCoroutine(Pause(0));
+            gameStatusText.text = "GAME OVER";
+            gameStatusText.color = Color.red;
+            yield return new WaitForSeconds(4f);
+            Application.LoadLevel("Pacman");
+            yield break;
+        }
+        if (!isRestart)
+        {
+            StartCoroutine(Pause(4f));
+            highScore = PlayerPrefs.GetFloat("Highscore");
+            highScoreText.text = highScore.ToString();
+            playerText.text = "Player One";
+            gameStatusText.text = "Ready!";
+            yield return new WaitForSeconds(2f);
+            playerText.text = "";
+        }
+        else
+        {
+            StartCoroutine(Pause(2f));
+            gameStatusText.text = "Ready!";
+        }
+        
         InstantiatePacman();
         InstantiateGhosts();
         yield return new WaitForSeconds(2f);
@@ -108,6 +161,8 @@ public class GameController : MonoBehaviour
     {
         player = (Pacman)Instantiate(pacmanPrefab, pacmanPrefab.startPosition, pacmanPrefab.gameObject.transform.rotation);
         player.gameController = this;
+        Destroy(lifeSprites[lifes-1]);
+        lifes--;
     }
 
     // Update is called once per frame
@@ -129,6 +184,9 @@ public class GameController : MonoBehaviour
             highScore = Score;
             highScoreText.text = Score.ToString();
         }
+
+        if (totalPoints == 0)
+            Application.LoadLevel("Pacman");
 	}
 
     void updatePowerPellet()
@@ -140,7 +198,7 @@ public class GameController : MonoBehaviour
 
         PPtimeLeft -= Time.smoothDeltaTime;
 
-        if (PPtimeLeft <= PowerPelletTime * 0.2)
+        if (PPtimeLeft <= PowerPelletTimes[(level >= PowerPelletTimes.Length ? PowerPelletTimes.Length - 1 : level)] * 0.2)
         {
             setGhostsVulnEnd(true, false);
         }
@@ -148,7 +206,6 @@ public class GameController : MonoBehaviour
         if (PPtimeLeft <= 0)
         {
             endPowerPellet();
-
         }
     }
 
@@ -261,7 +318,7 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        modeTimer += Time.deltaTime;
+        modeTimer += Time.smoothDeltaTime;
 
         switch (modeCount)
         {
@@ -391,8 +448,34 @@ public class GameController : MonoBehaviour
     // If Pacman dies, reset the ghosts back to the original position and set game flags
     public void PacmanDeath()
     {
+        if (!blinky)
+        {
+            return;
+        }
+
         bGlobalCounter = true;
         globalDotCount = 0;
+
+        // Destroy the game objects.
+        Destroy(blinky.gameObject);
+        Destroy(clyde.gameObject);
+        Destroy(inky.gameObject);
+        Destroy(pinky.gameObject);
+
+        // Destroy the scripts.
+        Destroy(blinky);
+        Destroy(clyde);
+        Destroy(inky);
+        Destroy(pinky);
+
+        blinky = null;
+        clyde = null;
+        inky = null;
+        pinky = null;
+
+        houseTimer = 0;
+        modeTimer = 0;
+        modeCount = 0;
     }
 
     public IEnumerator Pause(float duration)
@@ -429,7 +512,7 @@ public class GameController : MonoBehaviour
     {
         // Set bPowerPellet to true so Update can countdown the time left
         activePowerPellet = true;
-        PPtimeLeft = PowerPelletTime;
+        PPtimeLeft = PowerPelletTimes[(level >= PowerPelletTimes.Length ? PowerPelletTimes.Length - 1 : level)];
         setGhostsVuln(true);
         setGhostsVulnEnd(false, false);
     }
@@ -467,19 +550,9 @@ public class GameController : MonoBehaviour
         pinky.returnToDefault();
     }
 
-    public void AddTile(int x, int y, byte cost)
-    {
-        tiles[x, y] = cost;
-    }
-
     public void AddPacTile(int x, int y, PacTile pacTile)
     {
         pacTiles[x, y] = pacTile;
-    }
-
-    public PacTile GetPacTile(int x, int y)
-    {
-        return PacTiles[x, y];
     }
 
     public PacTile GetPacTile(Vector2 position)
@@ -487,8 +560,8 @@ public class GameController : MonoBehaviour
         return PacTiles[(int)position.x, (int)position.y];
     }
 
-    public byte GetTile(float x, float y)
+    public PacTile GetPacTile(int x, int y)
     {
-        return tiles[(int)x, (int)y];
+        return PacTiles[x, y];
     }
 }

@@ -85,8 +85,8 @@ MonoBehaviour:
   player: {fileID: 0}
   DebugPathColor: {r: .996078432, g: .796078444, b: .200000003, a: 1}
   DebugPath: 1
-  currentMode: 0
-  startMode: 6
+  startMode: 0
+  startHouseMode: 3
   startDirection: 1
   tile: {x: 0, y: 0}
   scatterTile: {x: 0, y: -35}
