@@ -49,15 +49,15 @@ TagManager:
   - name: Background
     userID: 2
     uniqueID: 1535931219
-    locked: 1
+    locked: 0
   - name: Wall
     userID: 8
     uniqueID: 817223381
-    locked: 1
+    locked: 0
   - name: Points
     userID: 7
     uniqueID: 4133436837
-    locked: 1
+    locked: 0
   - name: Default
     userID: 0
     uniqueID: 0
