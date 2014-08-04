@@ -81,7 +81,6 @@ public class GameController : MonoBehaviour
         }
 
         level = gameLevel.level++;
-
         var positionI = 0;
 
         for (int i = (level >= 5 ? level - 5: 0); i < level; i++)

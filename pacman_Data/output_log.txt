@@ -1,35 +1,30 @@
-Initialize engine version: 4.3.3f1 (c8ca9b6b9936)
+Initialize engine version: 4.5.1f3 (73cd57f80e3e)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.2049]
+    Version:  Direct3D 9.0c [nvd3dumx.dll 9.18.13.3788]
     Renderer: NVIDIA GeForce GT 525M
     Vendor:   NVIDIA
-    VRAM:     978 MB (via DXGI)
+    VRAM:     977 MB (via DXGI)
     Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
 Begin MonoManager ReloadAssembly
 Platform assembly: C:\Users\Miguel\Documents\Pacman\pacman_Data\Managed\UnityEngine.dll (this message is harmless)
 Loading C:\Users\Miguel\Documents\Pacman\pacman_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\Miguel\Documents\Pacman\pacman_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\Miguel\Documents\Pacman\pacman_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.110 seconds
+- Completed reload, in  0.120 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
- 
-(Filename:  Line: 1650)
-
+  HandleD3DDeviceLost: needs reset, doing it
+FullResetD3DDevice
+ResetD3DDevice
+dev->Reset
+D3Dwindow device not lost anymore
 HandleD3DDeviceLost
   HandleD3DDeviceLost: still lost
 Skipped frame because GfxDevice is in invalid state (device lost)
  
-(Filename:  Line: 1650)
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/Runtime/Misc/Player.cpp Line: 1617)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
- 
-(Filename:  Line: 1650)
-
+Waiting for finish

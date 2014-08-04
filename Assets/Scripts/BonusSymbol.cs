@@ -44,10 +44,10 @@ public class BonusSymbol : MonoBehaviour {
         hasSpawned = true;
 
         // The last index will be used after the level surpasses the array length. 
-        if (gameController.level > bonusSymbols.Length - 1)
+        if (gameController.level >= bonusSymbols.Length - 1)
             gameObject.GetComponent<SpriteRenderer>().sprite = bonusSymbols[bonusSymbols.Length - 1];
         else
-            gameObject.GetComponent<SpriteRenderer>().sprite = bonusSymbols[gameController.level];
+            gameObject.GetComponent<SpriteRenderer>().sprite = bonusSymbols[gameController.level - 1];
 
         yield return new WaitForSeconds(Random.Range(9,10));
         destroyBonus();

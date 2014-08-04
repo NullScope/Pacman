@@ -1,12 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\pacman.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameLevel.cs">
     <Files>
-      <File FileName="Pacman.sln" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Point.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\pacman.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Ghosts\GhostAI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameLevel.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
