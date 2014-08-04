@@ -80,7 +80,7 @@ public class GameController : MonoBehaviour
             gameLevel = GameObject.Find("Game Level(Clone)").GetComponent<GameLevel>();
         }
 
-        level = gameLevel.level++;
+        level = ++gameLevel.level;
         var positionI = 0;
 
         for (int i = (level >= 5 ? level - 5: 0); i < level; i++)
